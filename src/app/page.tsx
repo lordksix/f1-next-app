@@ -1,14 +1,8 @@
-import InputeName from "./components/InputeName";
 import ResultsComp from "./components/ResultsComp";
+import { getLastResultF1 } from "@/lib/getF1data";
 
-const Home = () => {
-  const toSignIn = (
-    <section>
-      <h2>Welcome to F1 mania</h2>
-      <p>Please input your name</p>
-      <InputeName />
-    </section>
-  );
+const Home = async () => {
+  const lastResult = await getLastResultF1() as ResultGPF1;
   const startPage = (
     <section>
       <p
@@ -29,8 +23,8 @@ const Home = () => {
     <main className="flex flex-col items-center justify-start min-h-screen gap-6 p-24">
       {startPage}
       <section className="flex flex-col items-center justify-between gap-4 lg:grid lg:w-full lg:grid-cols-2 2xl:grid-cols-1 2xl:w-9/12">
-        <ResultsComp />
-        <ResultsComp />
+        <ResultsComp results={lastResult}/>
+        <ResultsComp results={lastResult}/>
       </section>
     </main>
   );
