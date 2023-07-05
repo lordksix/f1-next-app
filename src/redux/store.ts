@@ -1,10 +1,9 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { userSlice } from '@/redux/user/userSlice';
-import { createWrapper } from "next-redux-wrapper";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 
-const makeStore = () =>
-  configureStore({
+export const store = configureStore({
   reducer: {
     [userSlice.name]: userSlice.reducer,
   },
@@ -20,13 +19,8 @@ export function setupStore(preloadedState: preLoadedStateType) {
   });
 }
 
-export type AppStore = ReturnType<typeof makeStore>;
-export type AppState = ReturnType<AppStore["getState"]>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  AppState,
-  unknown,
-  Action
->;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
-export const wrapper = createWrapper<AppStore>(makeStore);
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
