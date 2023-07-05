@@ -108,12 +108,14 @@ type ResultGPF1 = {
   Results: ResultRaceDriverF1[],
 }
 
-type userType = {
-  user: string,
+type UserState = {
+  authState: boolean,
+  name: string,
 }
 
 type preLoadedStateType = {
   user: {
-    user: string,
+    authState: boolean,
+    name: string,
   }
 }
