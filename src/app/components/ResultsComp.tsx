@@ -1,22 +1,34 @@
-import { getLastResultF1 } from "@/lib/getF1data";
+import { nanoid } from "@reduxjs/toolkit";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
-const ResultsComp = async () => {
-  const lastResult = await getLastResultF1();
+type Props = {
+  results: ResultGPF1
+}
+
+const ResultsComp = async ({ results }: Props) => {
+  const resultArr = results.Results.slice(0, 3);
+  const resultList = resultArr.map((element) => (
+    <li key={nanoid()} className="flex items-center gap-4">
+      <div>{`${element.position}.`}</div>
+      <div>
+        <p>{`${element.Driver.givenName} ${element.Driver.familyName} Points: ${element.points}`}</p>
+        <p>&#32;&#32;&#32;{`Total time: ${element.Time.time} Fastest time: ${element.FastestLap.Time.time}`}</p>
+      </div>
+    </li>
+  ));
   return (
-    <div className="border-solid rounded border-2 px-6 py-8">
+    <div className="px-6 py-8 border-2 border-solid rounded">
       <h3>Last <span className="hidden md:inline">Grand Prix</span> Results</h3>
       <div>
         <span className="hidden md:inline">
           Race name:
         </span>
-        <span>&#32;{lastResult?.raceName}</span>
+        <span>&#32;{results.raceName}</span>
       </div>
       <ul>
-        <li>Verstappen</li>
-        <li>Leclerc</li>
-        <li>Perez</li>
+        {resultList}
       </ul>
-      <p>here comes a link</p>
+      <div> Click for more details <FaRegArrowAltCircleRight /> </div>
     </div>
   )
 }
