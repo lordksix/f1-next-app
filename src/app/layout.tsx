@@ -1,7 +1,6 @@
-import { Providers } from '@/redux/provider'
 import './globals.css'
 import { Roboto } from 'next/font/google'
-import { wrapper } from '@/redux/store'
+import Providers from '@/redux/Providers'
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -20,11 +19,13 @@ function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={`${roboto.className} bg-white dark:bg-black text-black dark:text-white`}>
+      <Providers>
         {children}
+      </Providers>
       </body>
     </html>
   )
 }
 
-export default wrapper.withRedux(RootLayout);
+export default RootLayout;
