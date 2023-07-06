@@ -37,7 +37,7 @@ const ResultsComp = async ({ results }: Props) => {
       <ul>
         {resultList}
       </ul>
-      <Link className="hover:underline" href={`/results/${results[0].season}/${results[0].round}`}> Click for more details <FaRegArrowAltCircleRight /> </Link>
+      <Link className="hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}> Click for more details <FaRegArrowAltCircleRight /> </Link>
     </div>
   )
 }
