@@ -22,13 +22,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { yearid, raceid } }: Props) {
-  console.log(`${yearid}/${raceid}`)
-
   const raceGP = await getRaceResultF1(`${yearid}/${raceid}`) //deduped!
 
   if(!raceGP || raceGP.length === 0) {
       return {
-          title: 'Race Not Found',
+          title: 'Race Result Not Found',
           description: `Race ${raceid} of ${yearid} does not exist or have not been run yet`,
       }
   }
@@ -38,8 +36,7 @@ export async function generateMetadata({ params: { yearid, raceid } }: Props) {
   }
 }
 
-export default async function Result({ params: { yearid, raceid } }: Props) {
-  console.log(`${yearid}/${raceid}`)
+export default async function Race({ params: { yearid, raceid } }: Props) {
   const raceGPArr = await getRaceResultF1(`${yearid}/${raceid}`) //deduped!
 
   if(!raceGPArr || raceGPArr.length === 0) notFound()
