@@ -44,7 +44,7 @@ type CircuitGP = {
   circuitId: string,
   url: string,
   circuitName: string,
-  location: {
+  Location: {
     lat: string,
     long: string,
     locality: string,
@@ -80,9 +80,9 @@ type ResultRaceDriverF1 = {
     grid: string,
     laps: string,
     status: string,
-    Time: {
-        millis: string,
-        time: string,
+    Time?: {
+        millis?: string,
+        time?: string,
     },
     FastestLap: {
         rank: string,
@@ -118,4 +118,34 @@ type preLoadedStateType = {
     authState: boolean,
     name: string,
   }
+}
+
+type timeEventGP ={
+  date: string,
+  time: string,
+}
+
+type RaceGPF1 = {
+  season: string,
+  round: string,
+  url: string,
+  raceName: string,
+  Circuit: CircuitGP,
+  date: string,
+  time: string,
+  FirstPractice: timeEventGP,
+  SecondPractice: timeEventGP,
+  ThirdPractice?: timeEventGP,
+  Qualifying: timeEventGP,
+  Sprint?: timeEventGP,
+}
+
+type MetaRaceResult = {
+  yearid: string,
+  raceid: string,
+}
+
+type SeasonResponseType = {
+  season: string,
+  url: string,
 }
