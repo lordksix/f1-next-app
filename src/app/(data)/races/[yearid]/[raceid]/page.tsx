@@ -56,14 +56,14 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
   if(raceGP.Sprint){
     secondEvt = 'Qualifying';
     secondEvtTime = getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`);
-    thirdEvt = 'SecondPractice';
+    thirdEvt = 'Second Practice';
     thirdEvtTime = getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`);
     forthEvt = 'Sprint';
     forthEvtTime = getFormattedDate(`${raceGP.Sprint.date} ${raceGP.Sprint.time}`);
   } else {
-    secondEvt = 'SecondPractice';
+    secondEvt = 'Second Practice';
     secondEvtTime = getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`);
-    thirdEvt = 'ThirdPractice';
+    thirdEvt = 'Third Practice';
     thirdEvtTime = getFormattedDate(`${raceGP?.ThirdPractice?.date ?? ''} ${raceGP?.ThirdPractice?.time ?? ''}`);
     forthEvt = 'Qualifying';
     forthEvtTime = getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`);
