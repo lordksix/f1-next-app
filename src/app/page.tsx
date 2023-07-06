@@ -2,7 +2,7 @@ import ResultsComp from "./components/ResultsComp";
 import { getLastResultF1 } from "@/lib/getF1data";
 
 const Home = async () => {
-  const lastResult = await getLastResultF1() as ResultGPF1;
+  const lastResult = await getLastResultF1();
   const startPage = (
     <section>
       <p
