@@ -1,8 +1,10 @@
+import NextRaceComp from "./components/NextRaceComp";
 import ResultsComp from "./components/ResultsComp";
-import { getLastResultF1 } from "@/lib/getF1data";
+import { getLastResultF1, getNextRaceF1 } from "@/lib/getF1data";
 
 const Home = async () => {
   const lastResult = await getLastResultF1();
+  const nextRace = await getNextRaceF1();
   const startPage = (
     <section>
       <p
@@ -24,7 +26,7 @@ const Home = async () => {
       {startPage}
       <section className="flex flex-col items-center justify-between gap-4 lg:grid lg:w-full lg:grid-cols-2 2xl:grid-cols-1 2xl:w-9/12">
         <ResultsComp results={lastResult}/>
-        <ResultsComp results={lastResult}/>
+        <NextRaceComp races={nextRace}/>
       </section>
     </main>
   );
