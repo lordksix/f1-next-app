@@ -40,7 +40,7 @@ const NextRaceComp = ({ races }: Props) => {
         <span>{raceDate}</span>
       </p>
 
-      <Link className="hover:underline" href="/"> Click for more details <FaRegArrowAltCircleRight /> </Link>
+      <Link className=" hover:text-blue-500" href={`/races/${races[0].season}/${races[0].round}`}> Click for more details <FaRegArrowAltCircleRight /> </Link>
     </div>
   )
 }
