@@ -10,6 +10,7 @@ const roboto = Roboto({
 export const metadata = {
   title: 'lordkisx f1mania',
   description: 'F1 news and information application',
+  author: 'created by @lordksix at github',
 }
 
 function RootLayout({
@@ -19,7 +20,10 @@ function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} bg-white dark:bg-black text-black dark:text-white`}>
+      <body
+        className={`${roboto.className} bg-white dark:bg-black text-black dark:text-white`}
+        suppressHydrationWarning={true} 
+      >
       <Providers>
         {children}
       </Providers>
