@@ -18,7 +18,7 @@ const ResultsComp = async ({ results }: Props) => {
   } 
   const resultArr = results[0].Results.slice(0, 3);
   const resultList = resultArr.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4">
+    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
         <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
@@ -27,10 +27,10 @@ const ResultsComp = async ({ results }: Props) => {
     </li>
   ));
   return (
-    <div className="flex flex-col w-full h-full px-6 py-8 border-2 border-solid rounded ">
-      <h2 className="text-center">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
+    <div className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid rounded">
+      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
       <Suspense fallback="...">
-        <h3 className="text-center">
+        <h3 className="text-center md:text-lg">
           <span className="hidden md:inline">
             Race:
           </span>

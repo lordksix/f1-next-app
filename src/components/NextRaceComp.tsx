@@ -20,23 +20,23 @@ const NextRaceComp = ({ races }: Props) => {
   const locationName = `${races[0].Circuit.Location.locality}, ${races[0].Circuit.Location.country}`;
   const raceDate = getFormattedDate(`${races[0].date} ${races[0].time}`)
   return (
-    <div className="flex flex-col w-full h-full px-6 py-8 border-2 border-solid rounded">
-      <h2 className="text-center">Next <span className="md:hidden">Race</span><span className="hidden md:inline">Grand Prix</span></h2>
+    <div className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid rounded">
+      <h2 className="font-bold text-center lg:text-xl 2xl:text-2xl">Next <span className="md:hidden">Race</span><span className="hidden md:inline">Grand Prix</span></h2>
       <Suspense fallback="...">
-        <h3 className="text-center">{raceName}</h3>
-        <p>
+        <h3 className="text-center md:text-lg">{raceName}</h3>
+        <p className="text-sm md:text-base">
           <span className="hidden md:inline">
             Circuit:
           </span>
           <span>{circuitName}</span>
         </p>
-        <p>
+        <p className="text-sm md:text-base">
           <span className="hidden md:inline">
             Location:
           </span>
           <span>{locationName}</span>
         </p>
-        <p>
+        <p className="text-sm md:text-base">
           <span className="hidden md:inline">
             Time of race:
           </span>
