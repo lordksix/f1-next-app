@@ -1,13 +1,13 @@
-import { nanoid } from "@reduxjs/toolkit";
-import Link from "next/link";
-import { Suspense } from "react";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { nanoid } from '@reduxjs/toolkit';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 
 type Props = {
   results: ResultGPF1[] | undefined
 }
 
-const ResultsComp = async ({ results }: Props) => {
+const StandingComp = async ({ results }: Props) => {
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -51,7 +51,7 @@ const ResultsComp = async ({ results }: Props) => {
       </Suspense>
       
     </div>
-  )
+  );
 }
 
-export default ResultsComp
+export default StandingComp;

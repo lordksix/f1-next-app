@@ -149,3 +149,12 @@ type SeasonResponseType = {
   season: string,
   url: string,
 }
+
+type DriverStading = {
+  position: string,
+  positionText: string,
+  points: string,
+  wins: string,
+  Driver: Driver,
+  Constructors: ConstructorF1[],
+}
