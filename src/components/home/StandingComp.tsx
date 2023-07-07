@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 
 type Props = {
-  results: ResultGPF1[] | undefined
+  results: DriverStadingList[] | undefined
 }
 
 const StandingComp = async ({ results }: Props) => {
@@ -16,13 +16,13 @@ const StandingComp = async ({ results }: Props) => {
     );
     
   } 
-  const resultArr = results[0].Results.slice(0, 3);
+  const resultArr = results[0].DriverStandings.slice(0, 3);
   const resultList = resultArr.map((element) => (
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} / ${element.Constructor.name}`}</p>
-        <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
+        <p>{`${element.Driver.givenName} ${element.Driver.familyName} / ${element.Constructors[0].name}`}</p>
+        <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
     </li>
   ));
@@ -31,13 +31,11 @@ const StandingComp = async ({ results }: Props) => {
       className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
+      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Current Standing</h2>
       <Suspense fallback="...">
         <h3 className="text-center md:text-lg">
-          <span className="hidden md:inline">
-            Race:
-          </span>
-          <span>&#32;{results[0].raceName}</span>
+          <span>&#32;{results[0].season}</span>
+          <span>&#32;Driver Standing</span>
         </h3>
         <ul>
           {resultList}

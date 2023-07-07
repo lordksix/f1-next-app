@@ -35,14 +35,14 @@ export const getRaceF1 = async (raceId: string): Promise<RaceGPF1[] | undefined>
   return lastestResult;
 };
 
-export const getDriverStandingF1 = async (yearId: string): Promise<DriverStading[] | undefined>  => {
+export const getDriverStandingF1 = async (yearId: string): Promise<DriverStadingList[] | undefined>  => {
   const DRIVER_STANDING_ENDPOINT = `https://ergast.com/api/f1/${yearId}/driverStandings.json`;
   const res = await fetch(DRIVER_STANDING_ENDPOINT);
 
   if (!res.ok) return undefined;
 
   const { MRData } = await res.json();
-  const lastestResult: DriverStading[] = MRData.StandingsTable.StandingsLists[0].DriverStandings;
+  const lastestResult: DriverStadingList[] = MRData.StandingsTable.StandingsLists;
 
   return lastestResult;
 };

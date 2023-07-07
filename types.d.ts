@@ -153,8 +153,14 @@ type SeasonResponseType = {
 type DriverStading = {
   position: string,
   positionText: string,
-  points: string,
+  points?: string,
   wins: string,
   Driver: Driver,
   Constructors: ConstructorF1[],
+}
+
+type DriverStadingList = {
+  season: string,
+  round: string,
+  DriverStandings: DriverStading[],
 }
