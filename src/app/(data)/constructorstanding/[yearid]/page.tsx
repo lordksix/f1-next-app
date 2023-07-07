@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getDriverStandingF1 } from "@/lib/getF1data"
+import { getConstructorStandingF1 } from "@/lib/getF1data"
 import { nanoid } from "@reduxjs/toolkit"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { yearid } }: Props) {
-  const standing = await getDriverStandingF1(yearid) //deduped!
+  const standing = await getConstructorStandingF1(yearid) //deduped!
 
   if(!standing || standing.length === 0) {
       return {
@@ -36,23 +36,19 @@ export async function generateMetadata({ params: { yearid } }: Props) {
 }
 
 export default async function DriverStanding({ params: { yearid } }: Props) {
-  const standing = await getDriverStandingF1(yearid) //deduped!
+  const standing = await getConstructorStandingF1(yearid) //deduped!
 
   if(!standing || standing.length === 0) notFound()
 
   const standingResult = standing[0];
 
-  const resultList = standingResult.DriverStandings.map((element) => (
+  const resultList = standingResult.ConstructorStandings.map((element) => (
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
-      <p>{`${element.position}.`}</p>
+      <div>{`${element.position}.`}</div>
       <div>
-        <div className='flex gap-2'>
-          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
-          <FlagComp nationality={element.Driver.nationality}/>
-        </div>
-        <div className='flex gap-2'>
-        <p>{element.Constructors[0].name}</p>
-          <FlagComp nationality={element.Constructors[0].nationality}/>
+      < div className='flex gap-2 sm:flex-wrap'>
+          <p>{element.Constructor.name}</p>
+          <FlagComp nationality={element.Constructor.nationality}/>
         </div>
         <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
