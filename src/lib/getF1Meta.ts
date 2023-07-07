@@ -10,8 +10,10 @@ export async function getRacesF1StaticParams(): Promise<MetaRaceResult[] | undef
   if(seasonsFetchedF1.length === 0) return [];
   seasonsFetchedF1.forEach((season) => {
     for (let index = 1; index < 26; index++) {
-      racesF1.push({ yearid: season.season, raceid: index.toString() })   
+      racesF1.push({ yearid: season.season, raceid: index.toString() });   
     }
   });
+  racesF1.push({ yearid: 'current', raceid: 'next' });
+  racesF1.push({ yearid: 'current', raceid: 'last' });
   return racesF1;
 }

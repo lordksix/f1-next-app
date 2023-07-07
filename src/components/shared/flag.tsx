@@ -14,7 +14,7 @@ const FlagComp = ({ nationality }: Props) => {
       src={flagURL}
       alt={`${nationality} Flag`}
       width="24"
-      height="23"
+      height="24"
       className="mr-2 rounded-sm"
     >
     </Image>
