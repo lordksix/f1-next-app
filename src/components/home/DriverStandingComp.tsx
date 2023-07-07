@@ -49,7 +49,7 @@ const DriverStandingComp = async ({ results }: Props) => {
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
-          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-red-500" href={`/results/${results[0].season}/${results[0].round}`}>
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-red-500" href="/driverstanding/current">
             Click for more details
             <FaRegArrowAltCircleRight />
           </Link>
