@@ -164,3 +164,17 @@ type DriverStadingList = {
   round: string,
   DriverStandings: DriverStading[],
 }
+
+type ConstructorStading = {
+  position: string,
+  positionText: string,
+  points?: string,
+  wins: string,
+  Constructor: ConstructorF1,
+}
+
+type ConstructorStadingList = {
+  season: string,
+  round: string,
+  ConstructorStandings: ConstructorStading[],
+}

@@ -1,12 +1,14 @@
 import NextRaceComp from "../components/home/NextRaceComp";
 import LastResultsComp from "../components/home/LastResultsComp";
-import { getRaceResultF1, getRaceF1, getDriverStandingF1 } from "@/lib/getF1data";
-import StandingComp from "@/components/home/StandingComp";
+import { getRaceResultF1, getRaceF1, getDriverStandingF1, getConstructorStandingF1 } from "@/lib/getF1data";
+import DriverStandingComp from "@/components/home/DriverStandingComp";
+import ConstructorStandingComp from "@/components/home/ConstructorStandingComp";
 
 const Home = async () => {
   const lastResult = await getRaceResultF1('current/last');
   const nextRace = await getRaceF1('current/next');
-  const currentStanding = await getDriverStandingF1('current');
+  const currentDriverStanding = await getDriverStandingF1('current');
+  const currentConstructorStanding = await getConstructorStandingF1('current');
   const startPage = (
     <section>
       <p
@@ -31,8 +33,8 @@ const Home = async () => {
         <NextRaceComp races={nextRace}/>
       </section>
       <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
-        <StandingComp results={currentStanding}/>
-        <StandingComp results={currentStanding}/>
+        <DriverStandingComp results={currentDriverStanding}/>
+        <ConstructorStandingComp results={currentConstructorStanding}/>
       </section>
     </main>
   );

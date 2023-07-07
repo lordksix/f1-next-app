@@ -46,3 +46,15 @@ export const getDriverStandingF1 = async (yearId: string): Promise<DriverStading
 
   return lastestResult;
 };
+
+export const getConstructorStandingF1 = async (yearId: string): Promise<ConstructorStadingList[] | undefined>  => {
+  const DRIVER_STANDING_ENDPOINT = `https://ergast.com/api/f1/${yearId}/constructorStandings.json`;
+  const res = await fetch(DRIVER_STANDING_ENDPOINT);
+
+  if (!res.ok) return undefined;
+
+  const { MRData } = await res.json();
+  const lastestResult: ConstructorStadingList[] = MRData.StandingsTable.StandingsLists;
+
+  return lastestResult;
+};

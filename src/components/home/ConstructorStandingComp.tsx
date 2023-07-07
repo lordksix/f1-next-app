@@ -4,10 +4,10 @@ import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 
 type Props = {
-  results: DriverStadingList[] | undefined
+  results: ConstructorStadingList[] | undefined
 }
 
-const StandingComp = async ({ results }: Props) => {
+const ConstructorStandingComp = async ({ results }: Props) => {
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -16,12 +16,12 @@ const StandingComp = async ({ results }: Props) => {
     );
     
   } 
-  const resultArr = results[0].DriverStandings.slice(0, 3);
+  const resultArr = results[0].ConstructorStandings.slice(0, 3);
   const resultList = resultArr.map((element) => (
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} / ${element.Constructors[0].name}`}</p>
+        <p>{`${element.Constructor.name}`}</p>
         <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
     </li>
@@ -35,7 +35,7 @@ const StandingComp = async ({ results }: Props) => {
       <Suspense fallback="...">
         <h3 className="text-center md:text-lg">
           <span>&#32;{results[0].season}</span>
-          <span>&#32;Driver Standing</span>
+          <span>&#32;Constructors Standing</span>
         </h3>
         <ul>
           {resultList}
@@ -52,4 +52,4 @@ const StandingComp = async ({ results }: Props) => {
   );
 }
 
-export default StandingComp;
+export default ConstructorStandingComp;
