@@ -22,9 +22,9 @@ const Home = async () => {
     </section>
   );
   return (
-    <main className="flex flex-col items-center justify-start min-h-screen gap-6 p-24 no-scrollbar">
+    <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
-      <section className="flex flex-col justify-between gap-4 no-scrollbar lg:grid lg:w-full lg:grid-cols-2 2xl:grid-cols-1 2xl:w-9/12">
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2">
         <LastResultsComp results={lastResult}/>
         <NextRaceComp races={nextRace}/>
       </section>
