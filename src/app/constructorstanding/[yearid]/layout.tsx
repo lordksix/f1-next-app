@@ -11,10 +11,8 @@ function RootLayout({
     <Suspense fallback="loading">
       <HeaderData />
     </Suspense>
-    <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
-    <Suspense fallback="Fetching data">
+    <main className="flex flex-col items-center justify-center w-full min-h-screen py-32">
       {children}
-    </Suspense>
     </main>
     </>
   )

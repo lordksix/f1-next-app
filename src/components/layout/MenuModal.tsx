@@ -12,7 +12,7 @@ import { LoadingDots } from '../shared/icons';
 import { nanoid } from '@reduxjs/toolkit';
 
 
-const MenuModal = ({
+const MenuModal = async ({
   showMenuModal,
   setShowMenuModal,
 }: {
@@ -20,39 +20,41 @@ const MenuModal = ({
   setShowMenuModal: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [menuClicked, setMenuClicked] = useState(false);
+
   const links = [
     { path: '/', text: 'Home' },
+    { path: '/results/current/last', text: 'Last Race Results' },
+    { path: '/races/current/next', text: 'Next Race Schedule' },
     { path: '/driverstanding/current', text: 'Driver Standing' },
     { path: '/constructorstanding/current', text: 'Constructor Standing' },
-    { path: '/schedule', text: 'Schedule' },
   ];
+
   const linkBtns = (
     links.map((link) => (
-      <Link
+      <button
         key={nanoid()}
-        href={link.path}
-        className="w-full"
+        disabled={menuClicked}
+        className={`${
+          menuClicked
+            ? "cursor-not-allowed border-gray-200 bg-gray-100"
+            : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+        } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+        onClick={() => {
+          setMenuClicked(false);
+        }}
       >
-        <button
-          disabled={menuClicked}
-          className={`${
-            menuClicked
-              ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-          } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
-          onClick={() => {
-            setMenuClicked(true);
-          }}
-        >
           {menuClicked ? (
             <LoadingDots color="#808080" />
           ) : (
-            <>
+            <Link
+              href={link.path}
+              className="flex items-center justify-center w-full h-full"
+            >
               {link.text}
-            </>
+            </Link>
           )}
-        </button>
-      </Link>
+      </button>
+      
     ))
   );
 
