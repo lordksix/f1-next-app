@@ -49,7 +49,6 @@ export const getNextRaceF1 = async (): Promise<RaceGPF1[] | undefined>  => {
 
 export const getRaceF1 = async (raceId: string): Promise<RaceGPF1[] | undefined>  => {
   const RACE_ENDPOINT = `https://ergast.com/api/f1/${raceId}.json`;
-  console.log(RACE_ENDPOINT);
   const res = await fetch(RACE_ENDPOINT);
 
   if (!res.ok) return undefined;
