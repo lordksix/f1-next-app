@@ -31,7 +31,7 @@ export async function generateMetadata({ params: { yearid, raceid } }: Props) {
   }
   return {
       title: `${raceGP[0].season} ${raceGP[0].raceName} Schedule`,
-      description: `Race ${raceid} of ${yearid} does not exist`,
+      description: `Race ${raceid} of ${yearid} Schedule`,
   }
 }
 

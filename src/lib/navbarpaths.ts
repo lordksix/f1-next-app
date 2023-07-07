@@ -1,8 +1,8 @@
-import { getLastResultF1, getNextRaceF1 } from '@/lib/getF1data';
+import { getRaceResultF1, getRaceF1 } from '@/lib/getF1data';
 
 const navpaths = async() => {
-  const lastResult = await getLastResultF1();
-  const nextRace = await getNextRaceF1();
+  const lastResult = await getRaceResultF1('current/last');
+  const nextRace = await getRaceF1('current/next');
   let hrefLastResult: string;
   let hrefNexTRace: string;
   if(!lastResult) hrefLastResult = '/results';

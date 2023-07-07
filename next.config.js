@@ -2,6 +2,9 @@
 const nextConfig = {
   staticPageGenerationTimeout: 1000,
   swcMinify: true,
+  images: {
+    domains: ['www.countryflagicons.com'],
+  },
   async redirects() {
     return [
       {

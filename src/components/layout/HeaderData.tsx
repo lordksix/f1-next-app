@@ -26,12 +26,13 @@ const HeaderData = () => {
   const logo = (
     <Link href="/" className="flex items-center">
       <Image
-      src="/lordksix-logos_transparent.png"
-      alt="lordksix logo"
-      width="100"
-      height="30"
-      className="mr-2 rounded-sm bg-black dark:bg-transparent"
-      ></Image>
+        src="/lordksix-logos_transparent.png"
+        alt="lordksix logo"
+        width="100"
+        height="30"
+        className="mr-2 bg-black rounded-sm dark:bg-transparent"
+      >
+      </Image>
       F1Mania
     </Link>
   );
@@ -53,7 +54,7 @@ const HeaderData = () => {
             : "bg-white/0 dark:bg-black/0"
         } z-30 transition-all`}
       >
-        <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full h-16 max-w-screen-xl mx-5">
           {returnBtn}
           {logo}
           {burgerBtnMenuModal}
