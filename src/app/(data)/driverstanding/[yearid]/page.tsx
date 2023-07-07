@@ -68,7 +68,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
       </p>
       <div>
         <h3>Results</h3>
-        <ul>
+        <ul className="flex flex-col gap-4">
           {resultList}
         </ul>
       </div>
