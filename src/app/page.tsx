@@ -1,5 +1,5 @@
-import NextRaceComp from "../components/NextRaceComp";
-import LastResultsComp from "../components/LastResultsComp";
+import NextRaceComp from "../components/home/NextRaceComp";
+import LastResultsComp from "../components/home/LastResultsComp";
 import { getRaceResultF1, getRaceF1 } from "@/lib/getF1data";
 
 const Home = async () => {
@@ -24,7 +24,7 @@ const Home = async () => {
   return (
     <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
-      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2">
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
         <LastResultsComp results={lastResult}/>
         <NextRaceComp races={nextRace}/>
       </section>
