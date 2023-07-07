@@ -20,32 +20,35 @@ const NextRaceComp = ({ races }: Props) => {
   const locationName = `${races[0].Circuit.Location.locality}, ${races[0].Circuit.Location.country}`;
   const raceDate = getFormattedDate(`${races[0].date} ${races[0].time}`)
   return (
-    <div className="px-6 py-8 border-2 border-solid rounded">
+    <div className="flex flex-col w-full h-full px-6 py-8 border-2 border-solid rounded">
       <h2 className="text-center">Next <span className="md:hidden">Race</span><span className="hidden md:inline">Grand Prix</span></h2>
       <Suspense fallback="...">
         <h3 className="text-center">{raceName}</h3>
-        <p className="text-center">
+        <p>
           <span className="hidden md:inline">
             Circuit:
           </span>
           <span>{circuitName}</span>
         </p>
-        <p className="text-center">
+        <p>
           <span className="hidden md:inline">
             Location:
           </span>
           <span>{locationName}</span>
         </p>
-        <p className="text-center">
+        <p>
           <span className="hidden md:inline">
             Time of race:
           </span>
           <span>{raceDate}</span>
         </p>
-        <Link className=" hover:text-blue-500" href={`/races/${races[0].season}/${races[0].round}`}>
-          Click for more details
-          <FaRegArrowAltCircleRight />
-        </Link>
+        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+          <Link className="flex items-center justify-end gap-2 hover:text-blue-500" href={`/races/${races[0].season}/${races[0].round}`}>
+            Click for more details
+            <FaRegArrowAltCircleRight />
+          </Link>
+        </div>
+
       </Suspense>
     </div>
   )

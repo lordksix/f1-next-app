@@ -21,13 +21,13 @@ const ResultsComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4">
       <div>{`${element.position}.`}</div>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} Points: ${element.points}`}</p>
-        <p>&#32;&#32;&#32;{`Total time: ${element?.Time?.time || 'No time'} Fastest time: ${element.FastestLap.Time.time}`}</p>
+        <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+        <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
       </div>
     </li>
   ));
   return (
-    <div className="px-6 py-8 border-2 border-solid rounded">
+    <div className="flex flex-col w-full h-full px-6 py-8 border-2 border-solid rounded ">
       <h2 className="text-center">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
       <Suspense fallback="...">
         <h3 className="text-center">
@@ -39,10 +39,12 @@ const ResultsComp = async ({ results }: Props) => {
         <ul>
           {resultList}
         </ul>
-        <Link className="hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
-          Click for more details
-          <FaRegArrowAltCircleRight />
-        </Link>
+        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+            Click for more details
+            <FaRegArrowAltCircleRight />
+          </Link>
+        </div>
       </Suspense>
       
     </div>
