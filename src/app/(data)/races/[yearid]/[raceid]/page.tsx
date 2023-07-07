@@ -72,7 +72,7 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
   
 
   return (
-    <main>
+    <section>
       <h2 className="mt-4 mb-0 text-3xl">{`${raceGP.season} ${raceGP.raceName} Programming`}</h2>
       <p className="mt-0 text-sm">
         Date of Race: 
@@ -97,6 +97,6 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
       <p className="mb-10">
           <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
-    </main>
+    </section>
   )
 }
