@@ -1,5 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 type Props = {
@@ -27,17 +28,23 @@ const ResultsComp = async ({ results }: Props) => {
   ));
   return (
     <div className="px-6 py-8 border-2 border-solid rounded">
-      <h3 className="text-center">Last <span className="hidden md:inline">Grand Prix</span> Results</h3>
-      <p className="text-center">
-        <span className="hidden md:inline">
-          Race name:
-        </span>
-        <span>&#32;{results[0].raceName}</span>
-      </p>
-      <ul>
-        {resultList}
-      </ul>
-      <Link className="hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}> Click for more details <FaRegArrowAltCircleRight /> </Link>
+      <h2 className="text-center">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
+      <Suspense fallback="...">
+        <h3 className="text-center">
+          <span className="hidden md:inline">
+            Race:
+          </span>
+          <span>&#32;{results[0].raceName}</span>
+        </h3>
+        <ul>
+          {resultList}
+        </ul>
+        <Link className="hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+          Click for more details
+          <FaRegArrowAltCircleRight />
+        </Link>
+      </Suspense>
+      
     </div>
   )
 }
