@@ -178,3 +178,9 @@ type ConstructorStadingList = {
   round: string,
   ConstructorStandings: ConstructorStading[],
 }
+
+type CountryObj = {
+  NationalityID: number,
+  CountryCode: string,
+  Nationality: string,
+}

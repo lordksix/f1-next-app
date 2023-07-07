@@ -2,6 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import Link from "next/link";
 import { Suspense } from "react";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import FlagComp from "../shared/flag";
 
 type Props = {
   results: ResultGPF1[] | undefined
@@ -18,10 +19,18 @@ const ResultsComp = async ({ results }: Props) => {
   } 
   const resultArr = results[0].Results.slice(0, 3);
   const resultList = resultArr.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
+    <li key={nanoid()} className="flex flex-wrap items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} / ${element.Constructor.name}`}</p>
+        <div className='flex gap-2 sm:flex-wrap'>
+          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+          <FlagComp nationality={element.Driver.nationality}/>
+        </div>
+        <div className='flex gap-2 sm:flex-wrap'>
+          <p>{element.Constructor.name}</p>
+          <FlagComp nationality={element.Constructor.nationality}/>
+        </div>
+        
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
       </div>
     </li>
@@ -39,7 +48,7 @@ const ResultsComp = async ({ results }: Props) => {
           </span>
           <span>&#32;{results[0].raceName}</span>
         </h3>
-        <ul>
+        <ul className="flex flex-wrap gap-4">
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">

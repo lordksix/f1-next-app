@@ -2,6 +2,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
+import FlagComp from '../shared/flag';
 
 type Props = {
   results: DriverStadingList[] | undefined
@@ -19,9 +20,16 @@ const DriverStandingComp = async ({ results }: Props) => {
   const resultArr = results[0].DriverStandings.slice(0, 3);
   const resultList = resultArr.map((element) => (
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
-      <div>{`${element.position}.`}</div>
+      <p>{`${element.position}.`}</p>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} / ${element.Constructors[0].name}`}</p>
+        <div className='flex gap-2'>
+          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+          <FlagComp nationality={element.Driver.nationality}/>
+        </div>
+        <div className='flex gap-2'>
+        <p>{element.Constructors[0].name}</p>
+          <FlagComp nationality={element.Constructors[0].nationality}/>
+        </div>
         <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
     </li>
@@ -37,11 +45,11 @@ const DriverStandingComp = async ({ results }: Props) => {
           <span>&#32;{results[0].season}</span>
           <span>&#32;Driver Standing</span>
         </h3>
-        <ul>
+        <ul className="flex flex-wrap gap-4">
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
-          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-red-500" href={`/results/${results[0].season}/${results[0].round}`}>
             Click for more details
             <FaRegArrowAltCircleRight />
           </Link>

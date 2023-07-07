@@ -2,6 +2,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
+import FlagComp from '../shared/flag';
 
 type Props = {
   results: ConstructorStadingList[] | undefined
@@ -21,7 +22,10 @@ const ConstructorStandingComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-        <p>{`${element.Constructor.name}`}</p>
+      < div className='flex gap-2 sm:flex-wrap'>
+          <p>{element.Constructor.name}</p>
+          <FlagComp nationality={element.Constructor.nationality}/>
+        </div>
         <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
     </li>
@@ -37,11 +41,11 @@ const ConstructorStandingComp = async ({ results }: Props) => {
           <span>&#32;{results[0].season}</span>
           <span>&#32;Constructors Standing</span>
         </h3>
-        <ul>
+        <ul className="flex flex-wrap gap-4">
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
-          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500" href={`/results/${results[0].season}/${results[0].round}`}>
             Click for more details
             <FaRegArrowAltCircleRight />
           </Link>
