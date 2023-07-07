@@ -4,6 +4,7 @@ import { getRaceResultF1 } from "@/lib/getF1data"
 import getFormattedDate from "@/lib/getFormattedDate"
 import { nanoid } from "@reduxjs/toolkit"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
+import FlagComp from "@/components/shared/flag"
 
 export const revalidate = 86400
 
@@ -17,7 +18,7 @@ type Props = {
 export async function generateStaticParams() {
   const racesF1 = await getRacesF1StaticParams();
 
-  if(!racesF1) return []
+  if(!racesF1) return [];
   return racesF1;
 }
 
@@ -32,7 +33,7 @@ export async function generateMetadata({ params: { yearid, raceid } }: Props) {
   }
   return {
       title: `${raceGP[0].season} ${raceGP[0].raceName} Results`,
-      description: `Race ${raceid} of ${yearid} does not exist or have not been run yet`,
+      description: `Race ${raceid} of ${yearid} results`,
   }
 }
 
@@ -44,14 +45,20 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   const raceGP = raceGPArr[0];
 
   const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
-  console.log(raceGP)
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4">
-      <div>{`${element.position}.`}</div>
+    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
+      <p>{`${element.position}.`}</p>
       <div>
-        <p>{`${element.Driver.givenName} ${element.Driver.familyName} Points: ${element.points}`}</p>
-        <p>&#32;&#32;&#32;{`Total time: ${element?.Time?.time || 'No time'} Fastest time: ${element.FastestLap.Time.time}`}</p>
+        <div className='flex gap-2'>
+          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+          <FlagComp nationality={element.Driver.nationality}/>
+        </div>
+        <div className='flex gap-2'>
+        <p>{element.Constructor.name}</p>
+          <FlagComp nationality={element.Constructor.nationality}/>
+        </div>
+        <p>{`Total points: ${element?.points || '0'}`}</p>
       </div>
     </li>
   ));

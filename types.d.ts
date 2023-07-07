@@ -149,3 +149,38 @@ type SeasonResponseType = {
   season: string,
   url: string,
 }
+
+type DriverStading = {
+  position: string,
+  positionText: string,
+  points?: string,
+  wins: string,
+  Driver: Driver,
+  Constructors: ConstructorF1[],
+}
+
+type DriverStadingList = {
+  season: string,
+  round: string,
+  DriverStandings: DriverStading[],
+}
+
+type ConstructorStading = {
+  position: string,
+  positionText: string,
+  points?: string,
+  wins: string,
+  Constructor: ConstructorF1,
+}
+
+type ConstructorStadingList = {
+  season: string,
+  round: string,
+  ConstructorStandings: ConstructorStading[],
+}
+
+type CountryObj = {
+  NationalityID: number,
+  CountryCode: string,
+  Nationality: string,
+}

@@ -22,7 +22,8 @@ const MenuModal = ({
   const [menuClicked, setMenuClicked] = useState(false);
   const links = [
     { path: '/', text: 'Home' },
-    { path: '/standing', text: 'Standing' },
+    { path: '/driverstanding/current', text: 'Driver Standing' },
+    { path: '/constructorstanding/current', text: 'Constructor Standing' },
     { path: '/schedule', text: 'Schedule' },
   ];
   const linkBtns = (
@@ -58,20 +59,20 @@ const MenuModal = ({
   return (
     <Modal showModal={showMenuModal} setShowModal={setShowMenuModal}>
       <div className="w-full overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-gray-800 dark:bg-gray-400 px-4 py-6 pt-8 text-center lg:px-16 text-black">
+        <div className="flex flex-col items-center justify-center px-4 py-6 pt-8 space-y-3 text-center text-black bg-gray-800 border-b border-gray-200 dark:bg-gray-400 lg:px-16">
           <Link href="/">
             <Image
               src="/lordksix-logos_transparent.png"
               alt="lordksix logo"
               width="67"
               height="20"
-              className="mr-2 rounded-sm bg-black dark:bg-transparent h-10 w-32"
+              className="w-32 h-10 mr-2 bg-black rounded-sm dark:bg-transparent"
             />
           </Link>
-          <h3 className="font-display text-2xl font-bold">F1mania</h3>
+          <h3 className="text-2xl font-bold font-display">F1mania</h3>
         </div>
 
-        <div className="flex flex-col align-middle justify-center space-y-4 bg-gray-950  dark:bg-gray-200 px-4 py-8 lg:px-16 w-full">
+        <div className="flex flex-col justify-center w-full px-4 py-8 space-y-4 align-middle bg-gray-950 dark:bg-gray-200 lg:px-16">
           {linkBtns}
         </div>
       </div>

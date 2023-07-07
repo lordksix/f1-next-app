@@ -1,10 +1,14 @@
-import NextRaceComp from "../components/NextRaceComp";
-import LastResultsComp from "../components/LastResultsComp";
-import { getLastResultF1, getNextRaceF1 } from "@/lib/getF1data";
+import NextRaceComp from "../components/home/NextRaceComp";
+import LastResultsComp from "../components/home/LastResultsComp";
+import { getRaceResultF1, getRaceF1, getDriverStandingF1, getConstructorStandingF1 } from "@/lib/getF1data";
+import DriverStandingComp from "@/components/home/DriverStandingComp";
+import ConstructorStandingComp from "@/components/home/ConstructorStandingComp";
 
 const Home = async () => {
-  const lastResult = await getLastResultF1();
-  const nextRace = await getNextRaceF1();
+  const lastResult = await getRaceResultF1('current/last');
+  const nextRace = await getRaceF1('current/next');
+  const currentDriverStanding = await getDriverStandingF1('current');
+  const currentConstructorStanding = await getConstructorStandingF1('current');
   const startPage = (
     <section>
       <p
@@ -22,11 +26,15 @@ const Home = async () => {
     </section>
   );
   return (
-    <main className="flex flex-col items-center justify-start min-h-screen gap-6 p-24 no-scrollbar">
+    <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
-      <section className="no-scrollbar flex flex-col items-center justify-between gap-4 lg:grid lg:w-full lg:grid-cols-2 2xl:grid-cols-1 2xl:w-9/12">
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
         <LastResultsComp results={lastResult}/>
         <NextRaceComp races={nextRace}/>
+      </section>
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
+        <DriverStandingComp results={currentDriverStanding}/>
+        <ConstructorStandingComp results={currentConstructorStanding}/>
       </section>
     </main>
   );

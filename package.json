@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-tooltip": "^1.0.6",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
