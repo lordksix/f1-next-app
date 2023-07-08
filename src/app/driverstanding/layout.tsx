@@ -1,6 +1,6 @@
 import HeaderData from '@/components/layout/HeaderData';
 
-function RootLayout({
+function DriverstandingLayout({
   children,
 }: {
   children: React.ReactNode
@@ -15,4 +15,4 @@ function RootLayout({
   )
 }
 
-export default RootLayout;
+export default DriverstandingLayout;
