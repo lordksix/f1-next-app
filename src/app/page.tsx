@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
-      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10">
+      <section className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10">
         <LastResultsComp />
         <TwitterComp />
       </section>

@@ -9,7 +9,7 @@ const TwitterComp = () => {
       ariaPolite="assertive"
       theme="dark"
       onLoad={function noRefCheck(){}}
-      options={{ height: 'auto', width: 'auto'}}
+      options={{ height: '100%', width: '100%'}}
     />
   );
 };
