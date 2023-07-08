@@ -50,7 +50,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
-        <p>{`Total points: ${element?.points || '0'}`}</p>
+        <p>{`Total points: ${element?.points ?? '0'}`}</p>
       </div>
     </li>
   ));
