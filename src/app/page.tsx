@@ -31,13 +31,13 @@ const Home = async () => {
       {startPage}
       <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
         <LastResultsComp results={lastResult} />
-        <NextRaceComp races={nextRace} />
+        <TwitterComp />
       </section>
       <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
         <DriverStandingComp results={currentDriverStanding} />
         <ConstructorStandingComp results={currentConstructorStanding} />
       </section>
-      <TwitterComp />
+      <NextRaceComp races={nextRace} />
     </main>
   );
 }
