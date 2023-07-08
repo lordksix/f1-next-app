@@ -30,9 +30,9 @@ export default function RaceSchedule({
         <p className="text-sm md:text-base">
           Qualifying:&#32;{qualiData}
         </p>
-        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+        <div className="flex items-center justify-center w-full h-full">
           <Link
-            className="flex items-center justify-end gap-2 hover:text-blue-500"
+            className="flex items-center gap-2 hover:text-blue-500"
             href={round ? `/races/${season}/${round}` : `/races/${season}`}
           >
             Click for more details
