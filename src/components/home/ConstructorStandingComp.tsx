@@ -44,7 +44,10 @@ const ConstructorStandingComp = async () => {
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end justify-self-end">
-          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500" href="/constructorstanding/current">
+          <Link
+            className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500"
+            href="/constructorstanding/current"
+          >
             Full standing
             <FaRegArrowAltCircleRight />
           </Link>

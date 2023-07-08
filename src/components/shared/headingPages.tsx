@@ -22,7 +22,7 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
   const popList = popOverList.map((element) => (
     <button
       key={nanoid()}
-      className="flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md hover:bg-gray-100 active:bg-gray-200"
+      className="flex items-center justify-start w-full p-2 space-x-2 text-sm text-left text-black transition-all duration-75 rounded-md hover:bg-gray-100 active:bg-gray-200"
     >
       <Link
           href={element.href}
@@ -33,7 +33,7 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
     </button>
   ));
   return (
-    <div>
+    <div className='flex flex-wrap justify-between w-full gap-5'>
       <h2 className="mt-4 mb-0 text-3xl">{heading}</h2>
       <Popover
         content={
@@ -48,9 +48,9 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
           onClick={() => setOpenPopover(!openPopover)}
           className="flex items-center justify-between px-4 py-2 transition-all duration-75 border border-gray-300 rounded-md w-36 hover:border-gray-800 focus:outline-none active:bg-gray-100"
         >
-          <p className="text-gray-600">{popTitle}</p>
+          <p className="text-gray-100">{popTitle}</p>
           <LuChevronDown
-            className={`h-4 w-4 text-gray-600 transition-all ${openPopover ? "rotate-180" : ""
+            className={`h-4 w-4 text-gray-100 transition-all ${openPopover ? "rotate-180" : ""
               }`}
           />
         </button>
