@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
 import { getRaceResultF1 } from '@/lib/getF1data';
+import LoadingData from '../shared/loadingData';
 
 
 const ResultsComp = async () => {
@@ -36,12 +37,12 @@ const ResultsComp = async () => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
-      <Suspense fallback="...">
-        <h3 className="text-center md:text-lg">
+      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
+      <Suspense fallback={<LoadingData />}>
+        <h3 className="font-semibold text-center md:text-lg">
           <span className="hidden md:inline">
             Race:
           </span>

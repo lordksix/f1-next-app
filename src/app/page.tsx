@@ -1,8 +1,8 @@
-import NextRaceComp from "../components/home/NextRaceComp";
-import LastResultsComp from "../components/home/LastResultsComp";
-import DriverStandingComp from "@/components/home/DriverStandingComp";
-import ConstructorStandingComp from "@/components/home/ConstructorStandingComp";
-import TwitterComp from "@/components/shared/twitterComp";
+import CalendarComp from '../components/home/CalendarComp';
+import LastResultsComp from '../components/home/LastResultsComp';
+import DriverStandingComp from '@/components/home/DriverStandingComp';
+import ConstructorStandingComp from '@/components/home/ConstructorStandingComp';
+import TwitterComp from '@/components/shared/twitterComp';
 
 const Home = () => {
   const startPage = (
@@ -24,15 +24,18 @@ const Home = () => {
   return (
     <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
-      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10">
         <LastResultsComp />
         <TwitterComp />
       </section>
-      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
+      <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10">
         <DriverStandingComp />
         <ConstructorStandingComp />
       </section>
-      <NextRaceComp />
+      <section className="flex justify-center w-10/12 max-w-5xl md:w-9/12 no-scrollbar lg:w-10/12">
+        <CalendarComp />
+      </section>
+      
     </main>
   );
 }
