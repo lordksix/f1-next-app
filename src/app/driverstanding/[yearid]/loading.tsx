@@ -1,4 +1,9 @@
+import { LoadingDots } from '@/components/shared/icons';
+
 export default function Loading() {
-  // Or a custom loading skeleton component
-  return <p>&apos;Loading...&apos;</p>
+  return (
+    <div className="flex items-center justify-center w-full min-h-screen">
+      <LoadingDots color="#808080" />
+    </div>
+  );
 };

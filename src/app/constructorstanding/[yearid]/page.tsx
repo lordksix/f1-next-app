@@ -46,11 +46,11 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-      < div className='flex gap-2 sm:flex-wrap'>
+      < div className='flex items-center gap-2 sm:flex-wrap'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
-        <p>{`Total points: ${element?.points || '0'}`}</p>
+        <p>{`Total points: ${element?.points ?? '0'}`}</p>
       </div>
     </li>
   ));
