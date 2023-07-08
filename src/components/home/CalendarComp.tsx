@@ -77,7 +77,7 @@ const CalendarComp = async () => {
       </section>
         <div className="flex justify-center w-full h-full item-center">
           <Link className="flex items-center gap-2 text-base font-bold text-center hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
-            OPEN F1 CALENDAR
+            {`${races[0].season} F1 CALENDAR`}
             <FaRegArrowAltCircleRight />
           </Link>
         </div>

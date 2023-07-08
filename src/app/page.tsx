@@ -8,13 +8,13 @@ const Home = () => {
   const startPage = (
     <section>
       <p
-        className="animate-fade-up bg-gradient-to-br text-center text-base xs:text-lg sm:text-xl md:text-2xl from-stone-500 to-red-700 dark:from-white dark:to-blue-400 bg-clip-text font-bold text-transparent tracking-[-0.02em] opacity-0 drop-shadow-sm"
+        className="animate-fade-up bg-gradient-to-br text-center text-lg sm:text-xl md:text-2xl lg:text-3xl from-stone-500 to-red-700 dark:from-white dark:to-blue-400 bg-clip-text font-bold text-transparent tracking-[-0.02em] opacity-0 drop-shadow-sm"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         Welcome to
       </p>
       <h1
-      className="animate-fade-up bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]"
+      className="animate-fade-up bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
       F1mania

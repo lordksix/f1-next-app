@@ -34,18 +34,18 @@ const ConstructorStandingComp = async () => {
       className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Standing</h2>
+      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Constructor Standing</h2>
       <Suspense fallback={<LoadingData />}>
         <h3 className="font-semibold text-center md:text-lg">
           <span>&#32;{results[0].season}</span>
-          <span>&#32;Constructors Standing</span>
+          <span>&#32;Standing</span>
         </h3>
-        <ul className="flex flex-wrap gap-4">
+        <ul className="flex flex-wrap items-center justify-center w-full h-full gap-4 ">
           {resultList}
         </ul>
-        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+        <div className="flex items-end self-end justify-end justify-self-end">
           <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500" href="/constructorstanding/current">
-            Click for more details
+            Full standing
             <FaRegArrowAltCircleRight />
           </Link>
         </div>
