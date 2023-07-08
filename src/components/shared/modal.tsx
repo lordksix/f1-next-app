@@ -50,10 +50,10 @@ export default function Modal({
                 <motion.div
                   ref={desktopModalRef}
                   key="desktop-modal"
-                  className="fixed inset-0 z-40 hidden min-h-screen items-center justify-center md:flex"
-                  initial={{ scale: 0.95 }}
+                  className="fixed inset-0 z-40 items-center justify-center hidden min-h-screen md:flex"
+                  initial={{ scale: 0.875 }}
                   animate={{ scale: 1 }}
-                  exit={{ scale: 0.95 }}
+                  exit={{ scale: 0.875 }}
                   onMouseDown={(e) => {
                     if (desktopModalRef.current === e.target) {
                       setShowModal(false);

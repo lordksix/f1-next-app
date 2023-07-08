@@ -15,7 +15,7 @@ const FlagComp = ({ nationality }: Props) => {
       alt={`${nationality} Flag`}
       width="24"
       height="24"
-      className="w-6 h-5 mr-2 rounded-sm bg-slate-100 dark:bg-slate-950"
+      className="w-6 h-5 mr-2 rounded-sm bg-slate-300 dark:bg-slate-900"
     >
     </Image>
   );

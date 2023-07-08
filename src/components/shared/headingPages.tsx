@@ -26,7 +26,7 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
     >
       <Link
           href={element.href}
-          className="flex items-center justify-center w-full h-full"
+          className="flex items-center justify-center w-full h-full text-white dark:text-white hover:text-black"
         >
           {element.title}
       </Link>
@@ -37,7 +37,7 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
       <h2 className="text-lg align-middle md:text-3xl">{heading}</h2>
       <Popover
         content={
-          <div className="w-full p-2 bg-white rounded-md sm:w-40">
+          <div className="w-full p-2 text-white bg-gray-800 rounded-md dark:text-gray-800 sm:w-40">
             {popList}
           </div>
         }
@@ -46,13 +46,15 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
       >
         <button
           onClick={() => setOpenPopover(!openPopover)}
-          className="flex items-center justify-between px-4 py-2 transition-all duration-75 border border-gray-300 rounded-md w-36 hover:border-gray-800 focus:outline-none active:bg-gray-100"
+          className="flex items-center transition-all duration-75 border border-gray-300 rounded-md w-36 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:active:text-gray-800"
         >
-          <p className="text-gray-100">{popTitle}</p>
-          <LuChevronDown
-            className={`h-4 w-4 text-gray-100 transition-all ${openPopover ? "rotate-180" : ""
+          <p className="flex items-center justify-between w-full h-full px-4 py-2 text-gray-800 dark:text-gray-100 dark:active:text-gray-800">
+            {popTitle}
+            <LuChevronDown
+              className={`h-4 w-4 transition-all ${openPopover ? "rotate-180" : ""
               }`}
           />
+          </p>
         </button>
       </Popover>
     </div>

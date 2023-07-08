@@ -38,7 +38,7 @@ const MenuModal = async ({
         className={`${
           menuClicked
             ? "cursor-not-allowed border-gray-200 bg-gray-100"
-            : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            : "border border-gray-200 bg-white text-black hover:bg-gray-100"
         } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
         onClick={() => {
           setMenuClicked(false);
@@ -62,14 +62,14 @@ const MenuModal = async ({
   return (
     <Modal showModal={showMenuModal} setShowModal={setShowMenuModal}>
       <div className="w-full overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
-        <div className="flex flex-col items-center justify-center px-4 py-6 pt-8 space-y-3 text-center text-black bg-gray-800 border-b border-gray-200 dark:bg-gray-400 lg:px-16">
+        <div className="flex flex-col items-center justify-center px-4 py-6 pt-8 space-y-3 text-center text-white bg-gray-800 border-b border-gray-200 dark:text-black dark:bg-gray-400 lg:px-16">
           <Link href="/">
             <Image
               src="/lordksix-logos_transparent.png"
               alt="lordksix logo"
               width="67"
               height="20"
-              className="w-32 h-10 mr-2 bg-black rounded-sm dark:bg-transparent"
+              className="w-32 h-10 mr-2 rounded-sm dark:bg-black dark:bg-transparent"
             />
           </Link>
           <h3 className="text-2xl font-bold font-display">F1mania</h3>
