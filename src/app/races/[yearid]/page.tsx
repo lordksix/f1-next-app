@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation"
-import Link from "next/link"
 import { getRaceF1 } from "@/lib/getF1data"
 import getFormattedDate from "@/lib/getFormattedDate"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import { nanoid } from "@reduxjs/toolkit"
-import RaceSchedule from "@/components/shared/racecalender"
+import RaceSchedule from "@/components/shared/racecalendar"
 import LoadingData from "@/components/shared/loadingData"
 import { Suspense } from "react"
 
@@ -40,8 +39,11 @@ export async function generateMetadata({ params: { yearid } }: Props) {
 
 export default async function Result({ params: { yearid } }: Props) {
   const raceGPArr = await getRaceF1(`${yearid}`) //deduped!
-
-  if(!raceGPArr || raceGPArr.length === 0) notFound();
+  const currentGP = await getRaceF1('current/next');
+  let current: string;
+  if(!raceGPArr || raceGPArr.length === 0 || !currentGP) notFound();
+  if(currentGP.length === 0) current = '50';
+  else current = currentGP[0].round;
 
   const raceGPList = raceGPArr.map((element) => {
     const raceName = `${element.season} ${element.raceName}`;
@@ -62,6 +64,7 @@ export default async function Result({ params: { yearid } }: Props) {
             qualiData={qualiData}
             season={season}
             round={round}
+            current={current}
           />
         </Suspense>
       </div>

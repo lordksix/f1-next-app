@@ -4,7 +4,7 @@ import getFormattedDate from "@/lib/getFormattedDate"
 import { Suspense } from "react";
 import { getRaceF1 } from "@/lib/getF1data";
 import LoadingData from "../shared/loadingData";
-import RaceSchedule from "../shared/racecalender";
+import RaceSchedule from "../shared/racecalendar";
 
 const CalendarComp = async () => {
   const races = await getRaceF1('current/next');
