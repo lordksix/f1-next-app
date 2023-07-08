@@ -25,7 +25,7 @@ const HeaderData = () => {
     </Link>
   );
   const logo = (
-    <Link href="/" className="flex items-center">
+    <Link href="/" className="flex flex-wrap items-center justify-center">
       <Image
         src="/lordksix-logos_transparent.png"
         alt="lordksix logo"
