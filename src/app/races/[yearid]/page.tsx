@@ -6,6 +6,7 @@ import { nanoid } from "@reduxjs/toolkit"
 import RaceSchedule from "@/components/shared/racecalendar"
 import LoadingData from "@/components/shared/loadingData"
 import { Suspense } from "react"
+import HeadingPages from "@/components/shared/headingPages"
 
 export const revalidate = 86400
 
@@ -45,6 +46,14 @@ export default async function Result({ params: { yearid } }: Props) {
   if(currentGP.length === 0) current = '50';
   else current = currentGP[0].round;
 
+  const currentSeason = raceGPArr[0].season;
+  const seasonList = [];
+  const seasonTitle = 'Season';
+  for (let index = +currentSeason; index > 2015; index--) {
+    seasonList.push({ title: index.toString(), href: `/driverstanding/${index}` })
+  }
+  
+
   const raceGPList = raceGPArr.map((element) => {
     const raceName = `${element.season} ${element.raceName}`;
     const circuitName = element.Circuit.circuitName
@@ -73,11 +82,17 @@ export default async function Result({ params: { yearid } }: Props) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center w-10/12 h-full gap-6">
-      <h2 className="mt-4 mb-0 text-3xl text-center">{`F1 ${raceGPArr[0].season} CALENDAR`}</h2>
-      <section className="flex flex-col w-full h-full max-w-5xl gap-10 md:gap-0 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-10">
-        {raceGPList}
+    <main className="w-full max-w-4xl min-h-screen md:w-10/12 no-scrollbar lg:w-11/12">
+      <section className="flex flex-col items-center justify-center w-full gap-4">
+        <HeadingPages
+            popTitle={seasonTitle}
+            heading={`F1 ${currentSeason} CALENDAR`}
+            popOverList={seasonList}
+          />
+        <section className="flex flex-col w-full h-full max-w-5xl gap-10 md:w-11/12 md:gap-0 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-10">
+          {raceGPList}
+        </section>
       </section>
-    </div>
+    </main>
   )
 }
