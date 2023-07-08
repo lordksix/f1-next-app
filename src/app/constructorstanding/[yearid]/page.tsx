@@ -61,26 +61,24 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   ));
 
   return (
-    <main className="w-10/12 max-w-xl min-h-screen md:w-9/12 no-scrollbar lg:w-10/12">
-      <section className="flex flex-col justify-center w-full gap-4 item-center">
-        <HeadingPages
-          popTitle={seasonTitle}
-          heading={`${currentSeason} Constructors Standing`}
-          popOverList={seasonList}
-        />
-        <p className="mt-0 text-sm">
-        {`Current round: ${standingResult.round}`}
-        </p>
-        <div className="w-10/12 mx-auto">
-          <h3>Results</h3>
-          <ul className="flex flex-col items-center justify-center gap-4">
-            {resultList}
-          </ul>
-        </div>
-        <p>
-            <Link href="/" className="hover:text-blue-500">← Back to home</Link>
-        </p>
-    </section>
-    </main>
+    <section className="flex flex-col justify-center w-full gap-4 item-center">
+      <HeadingPages
+        popTitle={seasonTitle}
+        heading={`${currentSeason} Constructors Standing`}
+        popOverList={seasonList}
+      />
+      <p className="mt-0 text-sm sm:text-base">
+      {`Current round: ${standingResult.round}`}
+      </p>
+      <div>
+        <h3 className="mb-4">Results</h3>
+        <ul className="flex flex-col items-center justify-center gap-4 px-4">
+          {resultList}
+        </ul>
+      </div>
+      <p>
+          <Link href="/" className="hover:text-blue-500">← Back to home</Link>
+      </p>
+  </section>
   )
 }

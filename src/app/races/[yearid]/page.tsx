@@ -50,7 +50,7 @@ export default async function Result({ params: { yearid } }: Props) {
   const seasonList = [];
   const seasonTitle = 'Season';
   for (let index = +currentSeason; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/driverstanding/${index}` })
+    seasonList.push({ title: index.toString(), href: `/races/${index}` })
   }
   
 
@@ -59,7 +59,7 @@ export default async function Result({ params: { yearid } }: Props) {
     const circuitName = element.Circuit.circuitName
     const locationName = `${element.Circuit.Location.locality}, ${element.Circuit.Location.country}`;
     const raceDate = getFormattedDate(`${element.date} ${element.time}`)
-    const qualiData = getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`);
+    const qualiData = element?.Qualifying ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`)  : 'No info';
     const season = element.season;
     const round = element.round;
     return (

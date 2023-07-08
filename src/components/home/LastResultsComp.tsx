@@ -29,8 +29,7 @@ const ResultsComp = async () => {
         <div className='flex items-center gap-2 sm:flex-wrap'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
-        </div>
-        
+        </div>        
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
       </div>
     </li>

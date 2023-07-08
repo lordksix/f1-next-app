@@ -33,8 +33,8 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
     </button>
   ));
   return (
-    <div className='flex flex-wrap justify-between w-full gap-5'>
-      <h2 className="mt-4 mb-0 text-3xl">{heading}</h2>
+    <div className='flex flex-wrap items-center justify-between w-full gap-5'>
+      <h2 className="text-lg align-middle md:text-3xl">{heading}</h2>
       <Popover
         content={
           <div className="w-full p-2 bg-white rounded-md sm:w-40">

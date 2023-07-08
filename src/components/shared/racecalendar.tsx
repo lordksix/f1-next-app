@@ -19,19 +19,19 @@ export default function RaceSchedule({
     return (
       <>
         <h3 className="font-semibold text-center md:text-lg">{raceName}</h3>
-        <p className="text-sm md:text-base">
+        <p className="text-sm sm:text-base">
           Circuit:&#32;{circuitName}
         </p>
-        <p className="text-sm md:text-base">
+        <p className="text-sm sm:text-base">
           Location:&#32; {locationName}
         </p>
-        <p className="text-sm md:text-base">
+        <p className="text-sm sm:text-base">
           Race:&#32;{raceDate}
         </p>
-        <p className="text-sm md:text-base">
+        <p className="text-sm sm:text-base">
           Qualifying:&#32;{qualiData}
         </p>
-        <div className="flex flex-col justify-center h-full text-base font-medium items-centerw-full md:text-lg">
+        <div className="flex flex-col justify-center h-full text-base font-medium items-centerw-full sm:text-lg">
           {(current && round && (+round < +current)) && (
             <Link
               className="flex items-center gap-2 hover:text-blue-500"
