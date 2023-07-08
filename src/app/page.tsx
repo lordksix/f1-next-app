@@ -1,15 +1,10 @@
 import NextRaceComp from "../components/home/NextRaceComp";
 import LastResultsComp from "../components/home/LastResultsComp";
-import { getRaceResultF1, getRaceF1, getDriverStandingF1, getConstructorStandingF1 } from "@/lib/getF1data";
 import DriverStandingComp from "@/components/home/DriverStandingComp";
 import ConstructorStandingComp from "@/components/home/ConstructorStandingComp";
 import TwitterComp from "@/components/shared/twitterComp";
 
-const Home = async () => {
-  const lastResult = await getRaceResultF1('current/last');
-  const nextRace = await getRaceF1('current/next');
-  const currentDriverStanding = await getDriverStandingF1('current');
-  const currentConstructorStanding = await getConstructorStandingF1('current');
+const Home = () => {
   const startPage = (
     <section>
       <p
@@ -30,14 +25,14 @@ const Home = async () => {
     <main className="flex flex-col items-center justify-start min-h-screen gap-6 py-24 md:gap-10 no-scrollbar">
       {startPage}
       <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
-        <LastResultsComp results={lastResult} />
+        <LastResultsComp />
         <TwitterComp />
       </section>
       <section className="flex flex-col justify-between w-10/12 max-w-5xl gap-2 md:gap-4 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 lg:gap-10">
-        <DriverStandingComp results={currentDriverStanding} />
-        <ConstructorStandingComp results={currentConstructorStanding} />
+        <DriverStandingComp />
+        <ConstructorStandingComp />
       </section>
-      <NextRaceComp races={nextRace} />
+      <NextRaceComp />
     </main>
   );
 }

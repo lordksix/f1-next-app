@@ -2,12 +2,11 @@ import Link from "next/link";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import getFormattedDate from "@/lib/getFormattedDate"
 import { Suspense } from "react";
+import { getRaceF1 } from "@/lib/getF1data";
 
-type Props = {
-  races: RaceGPF1[] | undefined
-}
+const NextRaceComp = async () => {
+  const races = await getRaceF1('current/next');
 
-const NextRaceComp = ({ races }: Props) => {
   if(!races || races.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">

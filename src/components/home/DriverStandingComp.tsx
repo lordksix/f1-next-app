@@ -3,12 +3,10 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
+import { getDriverStandingF1 } from '@/lib/getF1data';
 
-type Props = {
-  results: DriverStadingList[] | undefined
-}
-
-const DriverStandingComp = async ({ results }: Props) => {
+const DriverStandingComp = async () => {
+  const results = await getDriverStandingF1('current');
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -22,11 +20,11 @@ const DriverStandingComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <p>{`${element.position}.`}</p>
       <div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
           <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
         <p>{element.Constructors[0].name}</p>
           <FlagComp nationality={element.Constructors[0].nationality}/>
         </div>

@@ -3,12 +3,10 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
+import { getConstructorStandingF1 } from '@/lib/getF1data';
 
-type Props = {
-  results: ConstructorStadingList[] | undefined
-}
-
-const ConstructorStandingComp = async ({ results }: Props) => {
+const ConstructorStandingComp = async () => {
+  const results = await getConstructorStandingF1('current');
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -22,7 +20,7 @@ const ConstructorStandingComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-      < div className='flex gap-2 sm:flex-wrap'>
+      < div className='flex items-center gap-2 sm:flex-wrap'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
