@@ -3,12 +3,11 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
+import { getDriverStandingF1 } from '@/lib/getF1data';
+import LoadingData from '../shared/loadingData';
 
-type Props = {
-  results: DriverStadingList[] | undefined
-}
-
-const DriverStandingComp = async ({ results }: Props) => {
+const DriverStandingComp = async () => {
+  const results = await getDriverStandingF1('current');
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -22,11 +21,11 @@ const DriverStandingComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <p>{`${element.position}.`}</p>
       <div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
           <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
         <p>{element.Constructors[0].name}</p>
           <FlagComp nationality={element.Constructors[0].nationality}/>
         </div>
@@ -36,12 +35,12 @@ const DriverStandingComp = async ({ results }: Props) => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Current Standing</h2>
-      <Suspense fallback="...">
-        <h3 className="text-center md:text-lg">
+      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Standing</h2>
+      <Suspense fallback={<LoadingData />}>
+        <h3 className="font-semibold text-center md:text-lg">
           <span>&#32;{results[0].season}</span>
           <span>&#32;Driver Standing</span>
         </h3>

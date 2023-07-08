@@ -50,11 +50,11 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <p>{`${element.position}.`}</p>
       <div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
           <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
         <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>

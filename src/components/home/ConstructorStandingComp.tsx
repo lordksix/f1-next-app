@@ -3,12 +3,11 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
+import { getConstructorStandingF1 } from '@/lib/getF1data';
+import LoadingData from '../shared/loadingData';
 
-type Props = {
-  results: ConstructorStadingList[] | undefined
-}
-
-const ConstructorStandingComp = async ({ results }: Props) => {
+const ConstructorStandingComp = async () => {
+  const results = await getConstructorStandingF1('current');
   if(!results || results.length === 0) {
     return (
       <div className="px-6 py-8 border-2 border-solid rounded">
@@ -22,7 +21,7 @@ const ConstructorStandingComp = async ({ results }: Props) => {
     <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-      < div className='flex gap-2 sm:flex-wrap'>
+      < div className='flex items-center gap-2 sm:flex-wrap'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
@@ -32,12 +31,12 @@ const ConstructorStandingComp = async ({ results }: Props) => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-2 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center lg:text-xl 2xl:text-2xl">Current Standing</h2>
-      <Suspense fallback="...">
-        <h3 className="text-center md:text-lg">
+      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Standing</h2>
+      <Suspense fallback={<LoadingData />}>
+        <h3 className="font-semibold text-center md:text-lg">
           <span>&#32;{results[0].season}</span>
           <span>&#32;Constructors Standing</span>
         </h3>
