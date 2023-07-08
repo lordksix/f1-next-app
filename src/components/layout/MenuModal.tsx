@@ -27,7 +27,7 @@ const MenuModal = async ({
     { path: '/races/current/next', text: 'Next Race Schedule' },
     { path: '/driverstanding/current', text: 'Driver Standing' },
     { path: '/constructorstanding/current', text: 'Constructor Standing' },
-    { path: '/races', text: 'F1 Calendar' },
+    { path: '/races/current', text: 'F1 Calendar' },
   ];
 
   const linkBtns = (

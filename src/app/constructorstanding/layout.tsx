@@ -1,3 +1,5 @@
+import HeaderData from '@/components/layout/HeaderData';
+
 function ConstructorstandingLayout({
   children,
 }: {
@@ -5,9 +7,10 @@ function ConstructorstandingLayout({
 }) {
   return (
     <>
-    <main className="flex flex-col items-center justify-center w-full min-h-screen py-32">
-      {children}
-    </main>
+      <HeaderData />
+      <main className="flex flex-col items-center justify-center w-full min-h-screen py-32">
+        {children}
+      </main>
     </>
   )
 }
