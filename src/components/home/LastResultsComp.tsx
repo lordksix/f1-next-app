@@ -29,8 +29,7 @@ const ResultsComp = async () => {
         <div className='flex items-center gap-2 sm:flex-wrap'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
-        </div>
-        
+        </div>        
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
       </div>
     </li>
@@ -48,12 +47,12 @@ const ResultsComp = async () => {
           </span>
           <span>&#32;{results[0].raceName}</span>
         </h3>
-        <ul className="flex flex-wrap gap-4">
+        <ul className="flex flex-wrap justify-center w-full h-full gap-4">
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
           <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
-            Click for more details
+            Full results
             <FaRegArrowAltCircleRight />
           </Link>
         </div>

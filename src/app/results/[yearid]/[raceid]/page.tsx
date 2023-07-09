@@ -5,6 +5,7 @@ import getFormattedDate from "@/lib/getFormattedDate"
 import { nanoid } from "@reduxjs/toolkit"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
+import HeadingPages from "@/components/shared/headingPages"
 
 export const revalidate = 86400
 
@@ -43,11 +44,16 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   if(!raceGPArr || raceGPArr.length === 0) notFound()
 
   const raceGP = raceGPArr[0];
-
+  const currentSeason = raceGP.season;
+  const seasonList = [];
+  const seasonTitle = 'Season';
+  for (let index = +currentSeason; index > 2015; index--) {
+    seasonList.push({ title: index.toString(), href: `/races/${index}` })
+  }
   const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
+    <li key={nanoid()} className="flex items-center w-full gap-4 text-sm flex-gap sm:text-base sm:grid sm:grid-cols-3 sm:gap-x-2 sm:gap-y-4">
       <p>{`${element.position}.`}</p>
       <div>
         <div className='flex items-center gap-2'>
@@ -55,37 +61,44 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
         <div className='flex items-center gap-2'>
-        <p>{element.Constructor.name}</p>
+          <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
+      </div>
+      <div>
         <p>{`Total points: ${element?.points || '0'}`}</p>
+        <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
       </div>
     </li>
   ));
 
   return (
-    <section>
-      <h2 className="mt-4 mb-0 text-3xl">{`${raceGP.season} ${raceGP.raceName} Results`}</h2>
-      <p className="mt-0 text-sm">
+    <section className="flex flex-col justify-center w-full gap-4 item-center">
+      <HeadingPages
+        popTitle={seasonTitle}
+        heading={`${raceGP.season} ${raceGP.raceName} Results`}
+        popOverList={seasonList}
+      />
+      <p className="text-sm sm:text-base">
         Date of Race: 
         {raceDate}
       </p>
-      <p className="mt-0 text-sm">
+      <p className="mt-0 text-sm sm:text-base">
         {`Circuit: ${raceGP.Circuit.circuitName}`}
       </p>
-      <p className="mt-0 text-sm">
+      <p className="mt-0 text-sm sm:text-base">
         {`Location: ${raceGP.Circuit.Location.locality}, ${raceGP.Circuit.Location.country}`}
       </p>
       <div>
-        <h3>Results</h3>
-        <ul>
+        <h3 className="mb-4">Results</h3>
+        <ul className="flex flex-col items-center justify-center gap-4 px-8">
           {resultList}
         </ul>
       </div>
-      <p className="mb-10">
+      <p>
           <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
       </p>
-      <p className="mb-10">
+      <p>
           <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
     </section>

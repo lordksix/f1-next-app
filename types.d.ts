@@ -133,10 +133,10 @@ type RaceGPF1 = {
   Circuit: CircuitGP,
   date: string,
   time: string,
-  FirstPractice: timeEventGP,
-  SecondPractice: timeEventGP,
+  FirstPractice?: timeEventGP,
+  SecondPractice?: timeEventGP,
   ThirdPractice?: timeEventGP,
-  Qualifying: timeEventGP,
+  Qualifying?: timeEventGP,
   Sprint?: timeEventGP,
 }
 

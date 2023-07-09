@@ -25,7 +25,7 @@ const HeaderData = () => {
     </Link>
   );
   const logo = (
-    <Link href="/" className="flex items-center">
+    <Link href="/" className="flex flex-wrap items-center justify-center">
       <Image
         src="/lordksix-logos_transparent.png"
         alt="lordksix logo"
@@ -39,7 +39,7 @@ const HeaderData = () => {
   );
   const burgerBtnMenuModal = (
     <button
-    className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+    className="rounded-full border border-gray-800 dark:border-gray-200 bg-black dark:bg-white p-1.5 px-4 text-sm text-white dark:text-black transition-all hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white"
     onClick={() => setShowMenuModal(true)}
   >
     <GiHamburgerMenu />

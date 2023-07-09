@@ -4,6 +4,7 @@ import { getConstructorStandingF1 } from "@/lib/getF1data"
 import { nanoid } from "@reduxjs/toolkit"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
+import HeadingPages from "@/components/shared/headingPages"
 
 export const revalidate = 86400
 
@@ -41,35 +42,43 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   if(!standing || standing.length === 0) notFound()
 
   const standingResult = standing[0];
+  const currentSeason = standingResult.season;
+  const seasonList = [];
+  const seasonTitle = 'Season';
+  for (let index = +currentSeason; index > 2015; index--) {
+    seasonList.push({ title: index.toString(), href: `/constructorstanding/${index}` })
+  }
 
   const resultList = standingResult.ConstructorStandings.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
+    <li key={nanoid()} className="flex items-center w-full gap-6 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
-      <div>
-      < div className='flex items-center gap-2 sm:flex-wrap'>
+      <div className='flex flex-wrap items-center justify-center w-full h-full gap-2 sm:grid sm:grid-cols-3 sm:gap-x-2'>
           <p>{element.Constructor.name}</p>
           <FlagComp nationality={element.Constructor.nationality}/>
-        </div>
-        <p>{`Total points: ${element?.points ?? '0'}`}</p>
+          <p>{`Total points: ${element?.points ?? '0'}`}</p>
       </div>
     </li>
   ));
 
   return (
-    <section>
-      <h2 className="mt-4 mb-0 text-3xl">{`${standingResult.season} Driver Standing`}</h2>
-      <p className="mt-0 text-sm">
+    <section className="flex flex-col justify-center w-full gap-4 item-center">
+      <HeadingPages
+        popTitle={seasonTitle}
+        heading={`${currentSeason} Constructors Standing`}
+        popOverList={seasonList}
+      />
+      <p className="mt-0 text-sm sm:text-base">
       {`Current round: ${standingResult.round}`}
       </p>
       <div>
-        <h3>Results</h3>
-        <ul className="flex flex-col gap-4">
+        <h3 className="mb-4">Results</h3>
+        <ul className="flex flex-col items-center justify-center gap-4 px-4">
           {resultList}
         </ul>
       </div>
-      <p className="mb-10">
+      <p>
           <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
-    </section>
+  </section>
   )
 }
