@@ -4,12 +4,13 @@ type Props = {
     src: string,
     alt: string,
     priority?: string,
+    caption?: string,
 }
 
-export default function CustomImage({ src, alt, priority }: Props) {
+export default function CustomImage({ src, alt, priority, caption }: Props) {
   const prty = priority ? true : false;
   return (
-    <div className="w-full h-full">
+    <figure className="w-full h-full">
       <Image
         className="mx-auto rounded-lg"
         src={src}
@@ -18,6 +19,7 @@ export default function CustomImage({ src, alt, priority }: Props) {
         height={650}
         priority={prty}
       />
-    </div>
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
   );
 }
