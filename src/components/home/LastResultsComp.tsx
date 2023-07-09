@@ -37,6 +37,7 @@ const ResultsComp = async () => {
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>        
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
+        <p>{`Points: ${element.points}`}</p>
       </div>
     </li>
   ));
