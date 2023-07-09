@@ -4,6 +4,7 @@ import { getDriverStandingF1 } from "@/lib/getF1data"
 import { nanoid } from "@reduxjs/toolkit"
 import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
+import HeadingPages from "@/components/shared/headingPages"
 
 export const revalidate = 86400
 
@@ -41,17 +42,23 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   if(!standing || standing.length === 0) notFound()
 
   const standingResult = standing[0];
+  const currentSeason = standingResult.season;
+  const seasonList = [];
+  const seasonTitle = 'Season';
+  for (let index = +currentSeason; index > 2015; index--) {
+    seasonList.push({ title: index.toString(), href: `/driverstanding/${index}` })
+  }
 
   const resultList = standingResult.DriverStandings.map((element) => (
-    <li key={nanoid()} className="flex items-center gap-4 text-sm md:text-base">
+    <li key={nanoid()} className="flex items-center w-full gap-6 text-sm lex md:text-base">
       <p>{`${element.position}.`}</p>
-      <div>
-        <div className='flex items-center gap-2'>
+      <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-cols-3 sm:gap-x-2'>
+        <div className='flex flex-wrap items-center w-full gap-2 md:grid md:grid-cols-2 md:gap-x-2'>
           <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex items-center gap-2'>
-        <p>{element.Constructors[0].name}</p>
+        <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-cols-2 sm:gap-x-2'>
+          <p>{element.Constructors[0].name}</p>
           <FlagComp nationality={element.Constructors[0].nationality}/>
         </div>
         <p>{`Total points: ${element?.points ?? '0'}`}</p>
@@ -60,18 +67,22 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   ));
 
   return (
-    <section>
-      <h2 className="mt-4 mb-0 text-3xl">{`${standingResult.season} Driver Standing`}</h2>
-      <p className="mt-0 text-sm">
+    <section className="flex flex-col justify-center w-full gap-4 item-center">
+      <HeadingPages
+        popTitle={seasonTitle}
+        heading={`${currentSeason} Driver Standing`}
+        popOverList={seasonList}
+      />
+      <p className="mt-0 text-sm sm:text-base">
       {`Current round: ${standingResult.round}`}
       </p>
       <div>
-        <h3>Results</h3>
-        <ul className="flex flex-col gap-4">
+        <h3 className="mb-4">Results</h3>
+        <ul className="flex flex-col items-center justify-center gap-4 px-4">
           {resultList}
         </ul>
       </div>
-      <p className="mb-10">
+      <p>
           <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
     </section>
