@@ -19,15 +19,21 @@ const ResultsComp = async () => {
   } 
   const resultArr = results[0].Results.slice(0, 3);
   const resultList = resultArr.map((element) => (
-    <li key={nanoid()} className="flex flex-wrap items-center gap-4 text-sm md:text-base">
+    <li key={nanoid()} className="flex items-center w-full gap-2 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
-        <div className='flex items-center gap-2 sm:flex-wrap'>
-          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+        <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
+          <Link 
+            href={element.Driver.url}
+            className="hover:font-bold"
+          >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex items-center gap-2 sm:flex-wrap'>
-          <p>{element.Constructor.name}</p>
+        <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
+          <Link 
+            href={element.Constructor.url}
+            className="hover:font-bold"
+          >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>        
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
@@ -36,18 +42,19 @@ const ResultsComp = async () => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
       <Suspense fallback={<LoadingData />}>
-        <h3 className="font-semibold text-center md:text-lg">
-          <span className="hidden md:inline">
-            Race:
-          </span>
-          <span>&#32;{results[0].raceName}</span>
-        </h3>
-        <ul className="flex flex-wrap justify-center w-full h-full gap-4">
+        <Link 
+          href={results[0].url}
+          className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
+        >
+          {results[0].raceName}
+        </Link>
+
+        <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid ">
           {resultList}
         </ul>
         <div className="flex items-end self-end justify-end w-full h-full justify-self-end">

@@ -3,7 +3,9 @@ import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 
 type Props = {
   raceName: string,
+  raceNameURL: string,
   circuitName: string,
+  circuitNameURL: string,
   locationName: string,
   raceDate: string,
   qualiData: string,
@@ -14,14 +16,18 @@ type Props = {
 
 export default function RaceSchedule({
   raceName, circuitName, locationName, raceDate, qualiData,
-  season, round = undefined, current = undefined,
+  raceNameURL, circuitNameURL, season, round = undefined, current = undefined,
 }: Props) {
     return (
       <>
-        <h3 className="font-semibold text-center md:text-lg">{raceName}</h3>
-        <p className="text-sm sm:text-base">
-          Circuit:&#32;{circuitName}
-        </p>
+        <Link 
+          href={raceNameURL}
+          className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
+        >{raceName}</Link>
+        <Link 
+          href={circuitNameURL}
+          className="text-sm hover:font-bold sm:text-base"
+        >{`Circuit: ${circuitName}`}</Link>
         <p className="text-sm sm:text-base">
           Location:&#32; {locationName}
         </p>

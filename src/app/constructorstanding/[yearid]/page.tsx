@@ -51,9 +51,12 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
 
   const resultList = standingResult.ConstructorStandings.map((element) => (
     <li key={nanoid()} className="flex items-center w-full gap-6 text-sm md:text-base">
-      <div>{`${element.position}.`}</div>
-      <div className='flex flex-wrap items-center justify-center w-full h-full gap-2 sm:grid sm:grid-cols-3 sm:gap-x-2'>
-          <p>{element.Constructor.name}</p>
+      <div>{`${+element.position < 10 ? '0' + element.position : element.position}.`}</div>
+      <div className="flex flex-wrap items-center w-full h-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2">
+          <Link 
+            href={element.Constructor.url}
+            className="hover:font-bold"
+          >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
           <p>{`Total points: ${element?.points ?? '0'}`}</p>
       </div>

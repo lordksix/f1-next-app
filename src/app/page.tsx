@@ -22,7 +22,7 @@ const Home = () => {
     </section>
   );
   return (
-    <main className="flex flex-col items-center justify-start w-full max-w-5xl min-h-screen gap-6 py-24 mx-auto md:gap-10 no-scrollbar">
+    <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-6 py-24 mx-auto md:gap-10 no-scrollbar">
       {startPage}
       <section className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10">
         <LastResultsComp />

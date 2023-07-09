@@ -53,15 +53,21 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
-    <li key={nanoid()} className="flex items-center w-full gap-4 text-sm flex-gap sm:text-base sm:grid sm:grid-cols-3 sm:gap-x-2 sm:gap-y-4">
-      <p>{`${element.position}.`}</p>
+    <li key={nanoid()} className="flex flex-wrap items-center w-full h-full gap-4 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2">
+      <div>{`${+element.position < 10 ? '0' + element.position : element.position}.`}</div>
       <div>
-        <div className='flex items-center gap-2'>
-          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+        <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2'>
+          <Link 
+            href={element.Driver.url}
+            className="hover:font-bold"
+          >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
-        <div className='flex items-center gap-2'>
-          <p>{element.Constructor.name}</p>
+        <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2'>
+          <Link 
+            href={element.Constructor.url}
+            className="hover:font-bold"
+          >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
         </div>
       </div>
@@ -80,12 +86,12 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
         popOverList={seasonList}
       />
       <p className="text-sm sm:text-base">
-        Date of Race: 
-        {raceDate}
+      {`Date of Race: ${raceDate}`}
       </p>
-      <p className="mt-0 text-sm sm:text-base">
-        {`Circuit: ${raceGP.Circuit.circuitName}`}
-      </p>
+      <Link 
+        href={raceGP.Circuit.url}
+        className="mt-0 text-sm hover:font-bold sm:text-base"
+      >{`Circuit: ${raceGP.Circuit.circuitName}`}</Link>
       <p className="mt-0 text-sm sm:text-base">
         {`Location: ${raceGP.Circuit.Location.locality}, ${raceGP.Circuit.Location.country}`}
       </p>

@@ -51,14 +51,20 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
 
   const resultList = standingResult.DriverStandings.map((element) => (
     <li key={nanoid()} className="flex items-center w-full gap-6 text-sm lex md:text-base">
-      <p>{`${element.position}.`}</p>
+      <div>{`${+element.position < 10 ? '0' + element.position : element.position}.`}</div>
       <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-cols-3 sm:gap-x-2'>
         <div className='flex flex-wrap items-center w-full gap-2 md:grid md:grid-cols-2 md:gap-x-2'>
-          <p>{`${element.Driver.givenName} ${element.Driver.familyName}`}</p>
+          <Link 
+            href={element.Driver.url}
+            className="hover:font-bold"
+          >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
         <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-cols-2 sm:gap-x-2'>
-          <p>{element.Constructors[0].name}</p>
+        <Link 
+            href={element.Constructors[0].url}
+            className="hover:font-bold"
+          >{element.Constructors[0].name}</Link>
           <FlagComp nationality={element.Constructors[0].nationality}/>
         </div>
         <p>{`Total points: ${element?.points ?? '0'}`}</p>
