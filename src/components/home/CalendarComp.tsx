@@ -22,7 +22,7 @@ const CalendarComp = async () => {
   const circuitName = races[0].Circuit.circuitName
   const locationName = `${races[0].Circuit.Location.locality}, ${races[0].Circuit.Location.country}`;
   const raceDate = getFormattedDate(`${races[0].date} ${races[0].time}`)
-  const qualiData = getFormattedDate(`${races[0].Qualifying.date} ${races[0].Qualifying.time}`);
+  const qualiData = races[0]?.Qualifying ? getFormattedDate(`${races[0].Qualifying.date} ${races[0].Qualifying.time}`) : 'No data';
 
   let followingRace;
   if(!followingRaceData || followingRaceData.length === 0) {
@@ -36,7 +36,7 @@ const CalendarComp = async () => {
     const circuitName = followingRaceData[0].Circuit.circuitName
     const locationName = `${followingRaceData[0].Circuit.Location.locality}, ${followingRaceData[0].Circuit.Location.country}`;
     const raceDate = getFormattedDate(`${followingRaceData[0].date} ${followingRaceData[0].time}`)
-    const qualiData = getFormattedDate(`${followingRaceData[0].Qualifying.date} ${followingRaceData[0].Qualifying.time}`);
+    const qualiData = followingRaceData[0]?.Qualifying ? getFormattedDate(`${followingRaceData[0].Qualifying.date} ${followingRaceData[0].Qualifying.time}`) : 'No data';
     followingRace = (
       <RaceSchedule
         raceName={raceName}
