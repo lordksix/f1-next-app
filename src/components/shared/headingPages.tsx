@@ -37,7 +37,7 @@ const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
       <h2 className="text-lg align-middle md:text-3xl">{heading}</h2>
       <Popover
         content={
-          <div className="w-full p-2 text-white bg-gray-800 rounded-md dark:text-gray-800 sm:w-40">
+          <div className="w-full p-2 text-white bg-gray-800 rounded-md dark:text-gray-800">
             {popList}
           </div>
         }

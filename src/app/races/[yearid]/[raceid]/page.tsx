@@ -88,9 +88,10 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
         Date of Race: 
         {raceDate}
       </p>
-      <p className="mt-0 text-sm sm:text-base">
-        {`Circuit: ${raceGP.Circuit.circuitName}`}
-      </p>
+      <Link 
+        href={raceGP.Circuit.url}
+        className="mt-0 text-sm hover:font-bold sm:text-base"
+      >{`Circuit: ${raceGP.Circuit.circuitName}`}</Link>
       <p className="mt-0 text-sm sm:text-base">
         {`Location: ${raceGP.Circuit.Location.locality}, ${raceGP.Circuit.Location.country}`}
       </p>

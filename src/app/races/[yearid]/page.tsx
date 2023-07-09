@@ -56,7 +56,9 @@ export default async function Result({ params: { yearid } }: Props) {
 
   const raceGPList = raceGPArr.map((element) => {
     const raceName = `${element.season} ${element.raceName}`;
+    const raceNameURL = element.url;
     const circuitName = element.Circuit.circuitName
+    const circuitNameURL = element.Circuit.url
     const locationName = `${element.Circuit.Location.locality}, ${element.Circuit.Location.country}`;
     const raceDate = getFormattedDate(`${element.date} ${element.time}`)
     const qualiData = element?.Qualifying ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`)  : 'No info';
@@ -67,7 +69,9 @@ export default async function Result({ params: { yearid } }: Props) {
         <Suspense fallback={<LoadingData />}>
           <RaceSchedule
             raceName={raceName}
+            raceNameURL={raceNameURL}
             circuitName={circuitName}
+            circuitNameURL={circuitNameURL}
             locationName={locationName}
             raceDate={raceDate}
             qualiData={qualiData}

@@ -1,8 +1,10 @@
 'use client';
+import useWindowSize from "@/lib/hooks/use-window-size";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 const TwitterComp = () => {
-  return (
+  const { isSmallMobile } = useWindowSize();
+  const result = ((!isSmallMobile) ? (
     <TwitterTimelineEmbed
       sourceType="profile"
       screenName="f1"
@@ -11,6 +13,13 @@ const TwitterComp = () => {
       onLoad={function noRefCheck(){}}
       options={{ height: 'auto', width: 'auto'}}
     />
+    ) : (
+      <></>
+    ));
+  return (
+  <>
+    {result}
+  </>
   );
 };
 

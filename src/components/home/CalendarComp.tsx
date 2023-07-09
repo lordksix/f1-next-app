@@ -19,7 +19,9 @@ const CalendarComp = async () => {
   const followingRaceData = await getRaceF1(`current/${+races[0].round + 1}`);
 
   const raceName = `${races[0].season} ${races[0].raceName}`;
+  const raceNameURL = races[0].url;
   const circuitName = races[0].Circuit.circuitName
+  const circuitNameURL = races[0].Circuit.url
   const locationName = `${races[0].Circuit.Location.locality}, ${races[0].Circuit.Location.country}`;
   const raceDate = getFormattedDate(`${races[0].date} ${races[0].time}`)
   const qualiData = races[0]?.Qualifying ? getFormattedDate(`${races[0].Qualifying.date} ${races[0].Qualifying.time}`) : 'No data';
@@ -33,14 +35,18 @@ const CalendarComp = async () => {
     );
   } else {
     const raceName = `${followingRaceData[0].season} ${followingRaceData[0].raceName}`;
-    const circuitName = followingRaceData[0].Circuit.circuitName
+    const raceNameURL = followingRaceData[0].url;
+    const circuitName = followingRaceData[0].Circuit.circuitName;
+    const circuitNameURL = followingRaceData[0].Circuit.url;
     const locationName = `${followingRaceData[0].Circuit.Location.locality}, ${followingRaceData[0].Circuit.Location.country}`;
-    const raceDate = getFormattedDate(`${followingRaceData[0].date} ${followingRaceData[0].time}`)
+    const raceDate = getFormattedDate(`${followingRaceData[0].date} ${followingRaceData[0].time}`);
     const qualiData = followingRaceData[0]?.Qualifying ? getFormattedDate(`${followingRaceData[0].Qualifying.date} ${followingRaceData[0].Qualifying.time}`) : 'No data';
     followingRace = (
       <RaceSchedule
         raceName={raceName}
+        raceNameURL={raceNameURL}
         circuitName={circuitName}
+        circuitNameURL={circuitNameURL}
         locationName={locationName}
         raceDate={raceDate}
         qualiData={qualiData}
@@ -51,16 +57,18 @@ const CalendarComp = async () => {
   }
   return (
     <div
-      className="flex flex-col w-full h-full gap-6 px-6 py-8 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-4 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Calendar</h2>
-      <section className="flex flex-col md:grid md:grid-cols-2 md:gap-10">
-        <div className="flex flex-col gap-4">
+      <section className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-10">
+        <div className="flex flex-col gap-2">
           <Suspense fallback={<LoadingData />}>
           <RaceSchedule
             raceName={raceName}
+            raceNameURL={raceNameURL}
             circuitName={circuitName}
+            circuitNameURL={circuitNameURL}
             locationName={locationName}
             raceDate={raceDate}
             qualiData={qualiData}
@@ -69,18 +77,18 @@ const CalendarComp = async () => {
           />
           </Suspense>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
         <Suspense fallback={<LoadingData />}>
           {followingRace}
         </Suspense>
         </div>
       </section>
-        <div className="flex justify-center w-full h-full item-center">
-          <Link className="flex items-center gap-2 text-base font-bold text-center hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
-            {`${races[0].season} F1 CALENDAR`}
-            <FaRegArrowAltCircleRight />
-          </Link>
-        </div>
+      <div className="flex justify-center w-full h-full item-center">
+        <Link className="flex items-center gap-2 text-base font-bold text-center hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
+          {`${races[0].season} F1 CALENDAR`}
+          <FaRegArrowAltCircleRight />
+        </Link>
+      </div>
     </div>
   );
 };
