@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import getFormattedDate from "@/lib/getFormattedDate"
-import { Suspense } from "react";
 import { getRaceF1 } from "@/lib/getF1data";
-import LoadingData from "../shared/loadingData";
 import RaceSchedule from "../shared/racecalendar";
 
 const CalendarComp = async () => {
@@ -63,7 +61,6 @@ const CalendarComp = async () => {
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Calendar</h2>
       <section className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-10">
         <div className="flex flex-col gap-2">
-          <Suspense fallback={<LoadingData />}>
           <RaceSchedule
             raceName={raceName}
             raceNameURL={raceNameURL}
@@ -75,12 +72,9 @@ const CalendarComp = async () => {
             season={races[0].season}
             round={races[0].round}
           />
-          </Suspense>
         </div>
         <div className="flex flex-col gap-2">
-        <Suspense fallback={<LoadingData />}>
           {followingRace}
-        </Suspense>
         </div>
       </section>
       <div className="flex justify-center w-full h-full item-center">

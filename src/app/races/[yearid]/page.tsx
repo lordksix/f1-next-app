@@ -1,12 +1,10 @@
-import { notFound } from "next/navigation"
-import { getRaceF1 } from "@/lib/getF1data"
-import getFormattedDate from "@/lib/getFormattedDate"
-import { getRacesF1StaticParams } from "@/lib/getF1Meta"
-import { nanoid } from "@reduxjs/toolkit"
-import RaceSchedule from "@/components/shared/racecalendar"
-import LoadingData from "@/components/shared/loadingData"
-import { Suspense } from "react"
-import HeadingPages from "@/components/shared/headingPages"
+import { notFound } from 'next/navigation';
+import { getRaceF1 } from '@/lib/getF1data';
+import getFormattedDate from '@/lib/getFormattedDate';
+import { getRacesF1StaticParams } from '@/lib/getF1Meta';
+import { nanoid } from '@reduxjs/toolkit';
+import RaceSchedule from '@/components/shared/racecalendar';
+import HeadingPages from '@/components/shared/headingPages';
 
 export const revalidate = 86400
 
@@ -47,14 +45,6 @@ export default async function Result({ params: { yearid } }: Props) {
   else current = currentGP[0].round;
 
   const currentSeason = raceGPArr[0].season;
-  const seasonList = [];
-  const seasonTitle = 'Season';
-  const currentYear = new Date().getFullYear();
-  for (let index = currentYear; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/races/${index}` })
-  }
-  
-
   const raceGPList = raceGPArr.map((element) => {
     const raceName = `${element.season} ${element.raceName}`;
     const raceNameURL = element.url;
@@ -67,20 +57,18 @@ export default async function Result({ params: { yearid } }: Props) {
     const round = element.round;
     return (
       <div key={nanoid()} className="flex flex-col gap-4">
-        <Suspense fallback={<LoadingData />}>
-          <RaceSchedule
-            raceName={raceName}
-            raceNameURL={raceNameURL}
-            circuitName={circuitName}
-            circuitNameURL={circuitNameURL}
-            locationName={locationName}
-            raceDate={raceDate}
-            qualiData={qualiData}
-            season={season}
-            round={round}
-            current={current}
-          />
-        </Suspense>
+        <RaceSchedule
+          raceName={raceName}
+          raceNameURL={raceNameURL}
+          circuitName={circuitName}
+          circuitNameURL={circuitNameURL}
+          locationName={locationName}
+          raceDate={raceDate}
+          qualiData={qualiData}
+          season={season}
+          round={round}
+          current={current}
+        />
       </div>
     );
 
@@ -90,9 +78,7 @@ export default async function Result({ params: { yearid } }: Props) {
     <main className="w-full max-w-4xl min-h-screen md:w-10/12 no-scrollbar lg:w-11/12">
       <section className="flex flex-col items-center justify-center w-full gap-4">
         <HeadingPages
-            popTitle={seasonTitle}
             heading={`F1 ${currentSeason} CALENDAR`}
-            popOverList={seasonList}
           />
         <section className="flex flex-col w-full h-full max-w-5xl gap-10 md:w-11/12 md:gap-0 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-10">
           {raceGPList}

@@ -184,3 +184,14 @@ type CountryObj = {
   CountryCode: string,
   Nationality: string,
 }
+
+type EventRace = {
+  firstEvt: string,
+  firstEvtTime: string,
+  secondEvt: string,
+  secondEvtTime: string,
+  thirdEvt: string,
+  thirdEvtTime: string,
+  forthEvt: string,
+  forthEvtTime: string,
+}

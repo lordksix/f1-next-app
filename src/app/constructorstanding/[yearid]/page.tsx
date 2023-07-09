@@ -42,12 +42,6 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   if(!standing || standing.length === 0) notFound()
 
   const standingResult = standing[0];
-  const currentSeason = standingResult.season;
-  const seasonList = [];
-  const seasonTitle = 'Season';
-  for (let index = +currentSeason; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/constructorstanding/${index}` })
-  }
 
   const resultList = standingResult.ConstructorStandings.map((element) => (
     <li key={nanoid()} className="flex items-center w-full gap-6 text-sm md:text-base">
@@ -66,9 +60,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
   return (
     <section className="flex flex-col justify-center w-full gap-4 item-center">
       <HeadingPages
-        popTitle={seasonTitle}
-        heading={`${currentSeason} Constructors Standing`}
-        popOverList={seasonList}
+        heading={`${standingResult.season} Constructors Standing`}
       />
       <p className="mt-0 text-sm sm:text-base">
       {`Current round: ${standingResult.round}`}

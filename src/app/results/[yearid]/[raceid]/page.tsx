@@ -44,12 +44,6 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   if(!raceGPArr || raceGPArr.length === 0) notFound()
 
   const raceGP = raceGPArr[0];
-  const currentSeason = raceGP.season;
-  const seasonList = [];
-  const seasonTitle = 'Season';
-  for (let index = +currentSeason; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/races/${index}` })
-  }
   const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
@@ -81,9 +75,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   return (
     <section className="flex flex-col justify-center w-full gap-4 item-center">
       <HeadingPages
-        popTitle={seasonTitle}
         heading={`${raceGP.season} ${raceGP.raceName} Results`}
-        popOverList={seasonList}
       />
       <p className="text-sm sm:text-base">
       {`Date of Race: ${raceDate}`}

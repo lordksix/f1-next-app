@@ -6,7 +6,7 @@ export async function getRacesF1StaticParams(): Promise<MetaRaceResult[] | undef
   const seasonsResponse = await res.json();
   const seasonsF1: (SeasonResponseType[] | undefined) = seasonsResponse.MRData?.SeasonTable?.Seasons;
   if(!seasonsF1 || seasonsF1.length === 0) return undefined;
-  const seasonsFetchedF1 = seasonsF1.filter((element) => +element.season > 2010);
+  const seasonsFetchedF1 = seasonsF1.filter((element) => +element.season > 2015);
   if(seasonsFetchedF1.length === 0) return [];
   seasonsFetchedF1.forEach((season) => {
     for (let index = 1; index < 26; index++) {
