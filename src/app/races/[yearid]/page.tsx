@@ -49,7 +49,8 @@ export default async function Result({ params: { yearid } }: Props) {
   const currentSeason = raceGPArr[0].season;
   const seasonList = [];
   const seasonTitle = 'Season';
-  for (let index = +currentSeason; index > 2015; index--) {
+  const currentYear = new Date().getFullYear();
+  for (let index = currentYear; index > 2015; index--) {
     seasonList.push({ title: index.toString(), href: `/races/${index}` })
   }
   
@@ -61,7 +62,7 @@ export default async function Result({ params: { yearid } }: Props) {
     const circuitNameURL = element.Circuit.url
     const locationName = `${element.Circuit.Location.locality}, ${element.Circuit.Location.country}`;
     const raceDate = getFormattedDate(`${element.date} ${element.time}`)
-    const qualiData = element?.Qualifying ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`)  : 'No info';
+    const qualiData = element?.Qualifying?.time ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`)  : 'No info';
     const season = element.season;
     const round = element.round;
     return (

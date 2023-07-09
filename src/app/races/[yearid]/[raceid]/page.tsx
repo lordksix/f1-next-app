@@ -61,18 +61,18 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
 
   if(raceGP.Sprint){
     secondEvt = 'Qualifying';
-    secondEvtTime = raceGP?.Qualifying ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
+    secondEvtTime = raceGP?.Qualifying?.time ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
     thirdEvt = 'Second Practice';
-    thirdEvtTime = raceGP?.SecondPractice ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
+    thirdEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
     forthEvt = 'Sprint';
     forthEvtTime = getFormattedDate(`${raceGP.Sprint.date} ${raceGP.Sprint.time}`);
   } else {
     secondEvt = 'Second Practice';
-    secondEvtTime = raceGP?.SecondPractice ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
+    secondEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
     thirdEvt = 'Third Practice';
-    thirdEvtTime = raceGP?.ThirdPractice ? getFormattedDate(`${raceGP.ThirdPractice.date} ${raceGP?.ThirdPractice?.time}`) : 'No info';
+    thirdEvtTime = raceGP?.ThirdPractice?.time ? getFormattedDate(`${raceGP.ThirdPractice.date} ${raceGP.ThirdPractice.time}`) : 'No info';
     forthEvt = 'Qualifying';
-    forthEvtTime = raceGP?.Qualifying ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
+    forthEvtTime = raceGP?.Qualifying?.time ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
   };
   
   
