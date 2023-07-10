@@ -81,9 +81,6 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
           {resultList}
         </ul>
       </div>
-      <p>
-          <Link href="/" className="hover:text-blue-500">← Back to home</Link>
-      </p>
     </section>
   )
 }
