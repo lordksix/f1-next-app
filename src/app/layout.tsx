@@ -16,7 +16,7 @@ function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${cx(sfPro.variable, roboto.variable)} min-h-screen bg-gradient-to-br no-scrollbar from-indigo-50 via-white to-cyan-100" dark:from-black dark:to-black text-black dark:text-white w-screen`}
+      <body className={`${cx(sfPro.variable, roboto.variable)} min-h-screen bg-gradient-to-br no-scrollbar from-indigo-50 via-white to-cyan-100" dark:from-black dark:to-black text-black dark:text-white/90 w-screen`}
         suppressHydrationWarning={true} 
       >
       {children}
