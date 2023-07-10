@@ -6,6 +6,8 @@ import TwitterComp from '@/components/shared/twitterComp';
 import Video from '@/components/shared/Video';
 import Posts from '@/components/home/Posts';
 
+export const revalidate = 86400;
+
 const Home = () => {
   const startPage = (
     <section>

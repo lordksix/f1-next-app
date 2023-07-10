@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation"
-import Link from "next/link"
-import { getConstructorStandingF1 } from "@/lib/getF1data"
-import { nanoid } from "@reduxjs/toolkit"
-import { getRacesF1StaticParams } from "@/lib/getF1Meta"
-import FlagComp from "@/components/shared/flag"
-import HeadingPages from "@/components/shared/headingPages"
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { getConstructorStandingF1 } from '@/lib/getF1data';
+import { nanoid } from '@reduxjs/toolkit';
+import { getRacesF1StaticParams } from '@/lib/getF1Meta';
+import FlagComp from '@/components/shared/flag';
+import HeadingPages from '@/components/shared/headingPages';
 
-export const revalidate = 86400
+export const revalidate = 86400;
 
 type Props = {
     params: {

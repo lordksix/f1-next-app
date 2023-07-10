@@ -7,7 +7,7 @@ import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
 import HeadingPages from "@/components/shared/headingPages"
 
-export const revalidate = 86400
+export const revalidate = 86400;
 
 type Props = {
     params: {
@@ -100,5 +100,5 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
           <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
     </section>
-  )
+  );
 }
