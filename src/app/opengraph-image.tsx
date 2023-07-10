@@ -26,7 +26,7 @@ export default async function OG() {
         }}
       >
         <img
-          src={new URL("../public/lordksix-logos_transparent.png", import.meta.url).toString()}
+          src={new URL("../../public/lordksix-logos_transparent.png", import.meta.url).toString()}
           alt="Lordksix Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />
