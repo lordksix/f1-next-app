@@ -1,10 +1,8 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
 import { getDriverStandingF1 } from '@/lib/getF1data';
-import LoadingData from '../shared/loadingData';
 
 const DriverStandingComp = async () => {
   const results = await getDriverStandingF1('current');
@@ -45,7 +43,6 @@ const DriverStandingComp = async () => {
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Driver Standing</h2>
-      <Suspense fallback={<LoadingData />}>
         <h3 className="font-semibold text-center md:text-lg">{results[0].season}</h3>
         <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid xl:gap-x-0">
           {resultList}
@@ -56,8 +53,6 @@ const DriverStandingComp = async () => {
             <FaRegArrowAltCircleRight />
           </Link>
         </div>
-      </Suspense>
-      
     </div>
   );
 }

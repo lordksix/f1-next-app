@@ -7,7 +7,7 @@ import { getRacesF1StaticParams } from "@/lib/getF1Meta"
 import FlagComp from "@/components/shared/flag"
 import HeadingPages from "@/components/shared/headingPages"
 
-export const revalidate = 86400
+export const revalidate = 86400;
 
 type Props = {
     params: {
@@ -44,13 +44,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   if(!raceGPArr || raceGPArr.length === 0) notFound()
 
   const raceGP = raceGPArr[0];
-  const currentSeason = raceGP.season;
-  const seasonList = [];
-  const seasonTitle = 'Season';
-  for (let index = +currentSeason; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/races/${index}` })
-  }
-  const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
+  const raceDate = raceGP?.date ? (raceGP?.time ? getFormattedDate(`${raceGP.date} ${raceGP.time}`) : raceGP.date) : 'No info';
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
     <li key={nanoid()} className="flex flex-wrap items-center w-full h-full gap-4 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2">
@@ -81,9 +75,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   return (
     <section className="flex flex-col justify-center w-full gap-4 item-center">
       <HeadingPages
-        popTitle={seasonTitle}
         heading={`${raceGP.season} ${raceGP.raceName} Results`}
-        popOverList={seasonList}
       />
       <p className="text-sm sm:text-base">
       {`Date of Race: ${raceDate}`}
@@ -104,9 +96,6 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
       <p>
           <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
       </p>
-      <p>
-          <Link href="/" className="hover:text-blue-500">← Back to home</Link>
-      </p>
     </section>
-  )
+  );
 }

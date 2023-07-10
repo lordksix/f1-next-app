@@ -122,7 +122,7 @@ type preLoadedStateType = {
 
 type timeEventGP ={
   date: string,
-  time: string,
+  time?: string,
 }
 
 type RaceGPF1 = {
@@ -132,7 +132,7 @@ type RaceGPF1 = {
   raceName: string,
   Circuit: CircuitGP,
   date: string,
-  time: string,
+  time?: string,
   FirstPractice?: timeEventGP,
   SecondPractice?: timeEventGP,
   ThirdPractice?: timeEventGP,
@@ -183,4 +183,27 @@ type CountryObj = {
   NationalityID: number,
   CountryCode: string,
   Nationality: string,
+}
+
+type EventRace = {
+  firstEvt: string,
+  firstEvtTime: string,
+  secondEvt: string,
+  secondEvtTime: string,
+  thirdEvt: string,
+  thirdEvtTime: string,
+  forthEvt: string,
+  forthEvtTime: string,
+}
+
+type Meta = {
+  id: string,
+  title: string,
+  date: string,
+  tags: string[],
+}
+
+type BlogPost = {
+  meta: Meta,
+  content: ReactElement<any, string | JSXElementConstructor<any>>,
 }

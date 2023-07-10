@@ -1,10 +1,8 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
 import { getRaceResultF1 } from '@/lib/getF1data';
-import LoadingData from '../shared/loadingData';
 
 
 const ResultsComp = async () => {
@@ -47,25 +45,22 @@ const ResultsComp = async () => {
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
-      <Suspense fallback={<LoadingData />}>
-        <Link 
-          href={results[0].url}
-          className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
-        >
-          {results[0].raceName}
-        </Link>
+      <Link 
+        href={results[0].url}
+        className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
+      >
+        {results[0].raceName}
+      </Link>
 
-        <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid ">
-          {resultList}
-        </ul>
-        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
-          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
-            Full results
-            <FaRegArrowAltCircleRight />
-          </Link>
-        </div>
-      </Suspense>
-      
+      <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid ">
+        {resultList}
+      </ul>
+      <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+        <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+          Full results
+          <FaRegArrowAltCircleRight />
+        </Link>
+      </div>
     </div>
   )
 }

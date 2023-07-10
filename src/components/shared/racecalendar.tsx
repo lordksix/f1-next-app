@@ -28,15 +28,9 @@ export default function RaceSchedule({
           href={circuitNameURL}
           className="text-sm hover:font-bold sm:text-base"
         >{`Circuit: ${circuitName}`}</Link>
-        <p className="text-sm sm:text-base">
-          Location:&#32; {locationName}
-        </p>
-        <p className="text-sm sm:text-base">
-          Race:&#32;{raceDate}
-        </p>
-        <p className="text-sm sm:text-base">
-          Qualifying:&#32;{qualiData}
-        </p>
+        <p className="text-sm sm:text-base">{`Location: ${locationName}`}</p>
+        <p className="text-sm sm:text-base">{`Race: ${raceDate}`}</p>
+        <p className="text-sm sm:text-base">{`Qualifying: ${qualiData}`}</p>
         <div className="flex flex-col justify-center h-full text-base font-medium items-centerw-full sm:text-lg">
           {(current && round && (+round < +current)) && (
             <Link
