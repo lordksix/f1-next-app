@@ -4,8 +4,8 @@ import { getPostsMeta } from '@/lib/posts';
 export async function generateMetadata() {
 
   return {
-      title: 'F1Mania News',
-      description: 'Latest nws about Formula 1 and F1mania'
+      title: 'Lordksix F1Mania  and Formula 1 news',
+      description: 'Latest news about Formula 1 and F1mania'
   }
 }
 
