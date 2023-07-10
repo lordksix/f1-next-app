@@ -55,6 +55,7 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
       <p className="mt-0 text-sm sm:text-base">{`Date of Race: ${raceDate}`}</p>
       <Link 
         href={raceGP.Circuit.url}
+        target="_blank"
         className="mt-0 text-sm hover:font-bold sm:text-base"
       >{`Circuit: ${raceGP.Circuit.circuitName}`}</Link>
       <p className="mt-0 text-sm sm:text-base">
@@ -68,7 +69,7 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
         <p>{`${eventSel.forthEvt}: ${eventSel.forthEvtTime}`}</p>
       </div>
       <p>
-          <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
+          <Link href={externalLink} target="_blank" className="hover:text-orange-500">More Details</Link>
       </p>
     </section>
   )

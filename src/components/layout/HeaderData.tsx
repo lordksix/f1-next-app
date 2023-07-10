@@ -8,21 +8,17 @@ import useScroll from '@/lib/hooks/use-scroll';
 import Image from 'next/image';
 import { useMenuModal } from './MenuModal';
 import LoadingData from '../shared/loadingData';
+import { useRouter } from 'next/navigation';
 
 const HeaderData = () => {
   const scrolled = useScroll(50);
+  const router = useRouter();
   const { MenuModal, setShowMenuModal } = useMenuModal();
 
   const returnBtn = (
-    <Link
-      href="/"
-      className="navbarBtn"
-      title="home"
-    >
-      <button type="button" className="flex">
-        <FaChevronLeft />
-      </button>
-    </Link>
+    <button type="button" className="flex" onClick={() => router.back()}  title="goback">
+      <FaChevronLeft />
+    </button>
   );
   const logo = (
     <Link href="/" className="flex flex-wrap items-center justify-center">

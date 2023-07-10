@@ -22,10 +22,12 @@ export default function RaceSchedule({
       <>
         <Link 
           href={raceNameURL}
+          target="_blank"
           className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
         >{raceName}</Link>
         <Link 
           href={circuitNameURL}
+          target="_blank"
           className="text-sm hover:font-bold sm:text-base"
         >{`Circuit: ${circuitName}`}</Link>
         <p className="text-sm sm:text-base">{`Location: ${locationName}`}</p>

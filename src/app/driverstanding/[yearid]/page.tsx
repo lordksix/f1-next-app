@@ -51,6 +51,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
         <div className='flex flex-wrap items-center w-full gap-2 md:grid md:grid-cols-2 md:gap-x-2'>
           <Link 
             href={element.Driver.url}
+            target="_blank"
             className="hover:font-bold"
           >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
@@ -58,6 +59,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
         <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-cols-2 sm:gap-x-2'>
         <Link 
             href={element.Constructors[0].url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructors[0].name}</Link>
           <FlagComp nationality={element.Constructors[0].nationality}/>
