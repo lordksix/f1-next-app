@@ -52,6 +52,7 @@ export default async function DriverStanding({ params: { yearid } }: Props) {
       <div className="flex flex-wrap items-center w-full h-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2">
           <Link 
             href={element.Constructor.url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>

@@ -22,6 +22,7 @@ const ConstructorStandingComp = async () => {
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max sm:flex-wrap'>
           <Link 
             href={element.Constructor.url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>

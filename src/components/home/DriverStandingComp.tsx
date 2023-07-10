@@ -22,6 +22,7 @@ const DriverStandingComp = async () => {
         <div className='grid items-center w-full grid-flow-col gap-2 auto-cols-max'>
           <Link 
             href={element.Driver.url}
+            target="_blank"
             className="hover:font-bold"
           >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
@@ -29,6 +30,7 @@ const DriverStandingComp = async () => {
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
           <Link 
             href={element.Constructors[0].url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructors[0].name}</Link>
           <FlagComp nationality={element.Constructors[0].nationality}/>

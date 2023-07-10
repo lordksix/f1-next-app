@@ -23,7 +23,8 @@ export async function generateStaticParams() {
 export function generateMetadata({ params: { tag } }: Props) {
 
     return {
-        title: `Posts about ${tag}`
+        title: `News about ${tag}`,
+        description: `All news in Lordksix F1mania about ${tag}`,
     }
 }
 

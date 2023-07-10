@@ -23,6 +23,7 @@ const ResultsComp = async () => {
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
           <Link 
             href={element.Driver.url}
+            target="_blank"
             className="hover:font-bold"
           >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
@@ -30,6 +31,7 @@ const ResultsComp = async () => {
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
           <Link 
             href={element.Constructor.url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
@@ -47,6 +49,7 @@ const ResultsComp = async () => {
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
       <Link 
         href={results[0].url}
+        target="_blank"
         className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
       >
         {results[0].raceName}
