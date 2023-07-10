@@ -4,6 +4,7 @@ import { getRaceF1 } from '@/lib/getF1data';
 import getFormattedDate from '@/lib/getFormattedDate';
 import { getRacesF1StaticParams } from '@/lib/getF1Meta';
 import HeadingPages from '@/components/shared/headingPages';
+import eventSelector from '@/lib/eventSelector';
 
 export const revalidate = 86400
 
@@ -43,51 +44,15 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
 
   const raceGP = raceGPArr[0];
   const currentSeason = raceGP.season;
-  const seasonList = [];
-  const seasonTitle = 'Season';
-  for (let index = +currentSeason; index > 2015; index--) {
-    seasonList.push({ title: index.toString(), href: `/races/${index}` });
-  }
   const externalLink = raceGP.url;
-  const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
-  const firstEvt: string = 'First Practice';
-  const firstEvtTime: string = raceGP?.FirstPractice ? getFormattedDate(`${raceGP.FirstPractice.date} ${raceGP.FirstPractice.time}`) : 'No info';
-  let secondEvt: string;
-  let secondEvtTime: string;
-  let thirdEvt: string;
-  let thirdEvtTime: string;
-  let forthEvt: string;
-  let forthEvtTime: string;
-
-  if(raceGP.Sprint){
-    secondEvt = 'Qualifying';
-    secondEvtTime = raceGP?.Qualifying?.time ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
-    thirdEvt = 'Second Practice';
-    thirdEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
-    forthEvt = 'Sprint';
-    forthEvtTime = getFormattedDate(`${raceGP.Sprint.date} ${raceGP.Sprint.time}`);
-  } else {
-    secondEvt = 'Second Practice';
-    secondEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
-    thirdEvt = 'Third Practice';
-    thirdEvtTime = raceGP?.ThirdPractice?.time ? getFormattedDate(`${raceGP.ThirdPractice.date} ${raceGP.ThirdPractice.time}`) : 'No info';
-    forthEvt = 'Qualifying';
-    forthEvtTime = raceGP?.Qualifying?.time ? getFormattedDate(`${raceGP.Qualifying.date} ${raceGP.Qualifying.time}`) : 'No info';
-  };
-  
-  
-
+  const raceDate = raceGP?.date ? (raceGP?.time ? getFormattedDate(`${raceGP.date} ${raceGP.time}`) : raceGP.date) : 'No info';
+  const eventSel = eventSelector(raceGP);
   return (
     <section className="flex flex-col justify-center w-full gap-4 item-center">
       <HeadingPages
-        popTitle={seasonTitle}
-        heading={`${raceGP.season} ${raceGP.raceName} Programming`}
-        popOverList={seasonList}
+        heading={`${currentSeason} ${raceGP.raceName} Programming`}
       />
-      <p className="mt-0 text-sm sm:text-base">
-        Date of Race: 
-        {raceDate}
-      </p>
+      <p className="mt-0 text-sm sm:text-base">{`Date of Race: ${raceDate}`}</p>
       <Link 
         href={raceGP.Circuit.url}
         className="mt-0 text-sm hover:font-bold sm:text-base"
@@ -97,16 +62,13 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
       </p>
       <h3>Schedule</h3>
       <div className="flex flex-col justify-center gap-2 px-8">
-        <p><span>{firstEvt}:&#160;</span><span>{firstEvtTime}</span></p>
-        <p><span>{secondEvt}:&#160;</span><span>{secondEvtTime}</span></p>
-        <p><span>{thirdEvt}:&#160;</span><span>{thirdEvtTime}</span></p>
-        <p><span>{forthEvt}:&#160;</span><span>{forthEvtTime}</span></p>
+        <p>{`${eventSel.firstEvt}: ${eventSel.firstEvtTime}`}</p>
+        <p>{`${eventSel.secondEvt}: ${eventSel.secondEvtTime}`}</p>
+        <p>{`${eventSel.thirdEvt}: ${eventSel.thirdEvtTime}`}</p>
+        <p>{`${eventSel.forthEvt}: ${eventSel.forthEvtTime}`}</p>
       </div>
       <p>
           <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
-      </p>
-      <p>
-          <Link href="/" className="hover:text-blue-500">← Back to home</Link>
       </p>
     </section>
   )

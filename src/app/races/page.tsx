@@ -1,8 +1,5 @@
-import { notFound } from "next/navigation"
-import Link from "next/link"
-import { getRaceF1 } from "@/lib/getF1data"
-import getFormattedDate from "@/lib/getFormattedDate"
-import { getRacesF1StaticParams } from "@/lib/getF1Meta"
+import { getRaceF1 } from '@/lib/getF1data';
+import { getRacesF1StaticParams } from '@/lib/getF1Meta';
 
 export const revalidate = 86400
 

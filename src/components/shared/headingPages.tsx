@@ -13,12 +13,16 @@ type popList = {
 
 type Props = {
   heading: string,
-  popTitle: string,
-  popOverList:popList[],
 };
 
-const HeadingPages = ({ heading, popOverList, popTitle }: Props) => {
+const HeadingPages = ({ heading}: Props) => {
   const [openPopover, setOpenPopover] = useState(false);
+  const popTitle = 'Season';
+  const popOverList = [];
+  const currentYear = new Date().getFullYear();
+  for (let index = +currentYear; index > 2015; index--) {
+    popOverList.push({ title: index.toString(), href: `/races/${index}` });
+  }
   const popList = popOverList.map((element) => (
     <button
       key={nanoid()}
