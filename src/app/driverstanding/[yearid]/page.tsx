@@ -17,8 +17,10 @@ type Props = {
 export async function generateStaticParams() {
   const racesF1 = await getRacesF1StaticParams();
 
-  if(!racesF1) return []
-  return racesF1;
+  if(!racesF1) return [];
+  return racesF1.map((race) => ({
+    yearid: race.yearid
+  }));
 }
 
 export async function generateMetadata({ params: { yearid } }: Props) {

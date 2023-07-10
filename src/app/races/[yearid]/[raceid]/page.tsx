@@ -70,9 +70,6 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
       <p>
           <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
       </p>
-      <p>
-          <Link href="/" className="hover:text-blue-500">← Back to home</Link>
-      </p>
     </section>
   )
 }
