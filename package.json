@@ -45,6 +45,8 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
