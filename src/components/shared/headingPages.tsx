@@ -20,9 +20,11 @@ const HeadingPages = ({ heading}: Props) => {
   const popTitle = 'Season';
   const popOverList = [];
   const currentYear = new Date().getFullYear();
-  for (let index = +currentYear; index > 2015; index--) {
+  popOverList.push({ title: 'Current', href: `/races/${currentYear}` });
+  for (let index = (+currentYear - 1); index > 2018; index--) {
     popOverList.push({ title: index.toString(), href: `/races/${index}` });
   }
+  popOverList.push({ title: 'All years', href: '/races' });
   const popList = popOverList.map((element) => (
     <button
       key={nanoid()}
@@ -37,7 +39,7 @@ const HeadingPages = ({ heading}: Props) => {
     </button>
   ));
   return (
-    <div className='flex flex-wrap items-center justify-between w-full gap-5'>
+    <div className='flex flex-wrap items-center justify-around w-full gap-5'>
       <h2 className="text-lg align-middle md:text-3xl">{heading}</h2>
       <Popover
         content={

@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import getFormattedDate from "@/lib/getFormattedDate"
-import { getRaceF1 } from "@/lib/getF1data";
-import RaceSchedule from "../shared/racecalendar";
+import Link from 'next/link';
+import { FaRegArrowAltCircleRight } from 'react-icons/fa';
+import getFormattedDate from '@/lib/getFormattedDate';
+import { getRaceF1 } from '@/lib/getF1data';
+import RaceSchedule from '../shared/racecalendar';
 
 const CalendarComp = async () => {
   const races = await getRaceF1('current/next');
@@ -77,12 +77,14 @@ const CalendarComp = async () => {
           {followingRace}
         </div>
       </section>
-      <div className="flex justify-center w-full h-full item-center">
-        <Link className="flex items-center gap-2 text-base font-bold text-center hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
-          {`${races[0].season} F1 CALENDAR`}
-          <FaRegArrowAltCircleRight />
-        </Link>
-      </div>
+      <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
+        {`${races[0].season} F1 CALENDAR`}
+        <FaRegArrowAltCircleRight />
+      </Link>
+      <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-orange-500 md:text-lg xl:text-2xl" href={'/races'}>
+        {'HISTORICAL F1 CALENDAR'}
+        <FaRegArrowAltCircleRight />
+      </Link>
     </div>
   );
 };

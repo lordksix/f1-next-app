@@ -76,15 +76,13 @@ export default async function Result({ params: { yearid } }: Props) {
   });
 
   return (
-    <main className="w-full max-w-4xl min-h-screen md:w-10/12 no-scrollbar lg:w-11/12">
-      <section className="flex flex-col items-center justify-center w-full gap-4">
-        <HeadingPages
-            heading={`F1 ${currentSeason} CALENDAR`}
-          />
-        <section className="flex flex-col w-full h-full max-w-5xl gap-10 md:w-11/12 md:gap-0 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-10">
-          {raceGPList}
-        </section>
+    <section className="flex flex-col items-center justify-center w-full max-w-4xl min-h-screen gap-8 md:w-10/12 no-scrollbar lg:w-11/12">
+      <HeadingPages
+          heading={`${currentSeason} F1 CALENDAR`}
+        />
+      <section className="flex flex-col w-full h-full max-w-5xl gap-10 md:w-11/12 md:gap-0 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-10">
+        {raceGPList}
       </section>
-    </main>
+    </section>
   )
 }
