@@ -45,7 +45,7 @@ export default async function Result({ params: { yearid, raceid } }: Props) {
   const raceGP = raceGPArr[0];
   const currentSeason = raceGP.season;
   const externalLink = raceGP.url;
-  const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
+  const raceDate = raceGP?.date ? (raceGP?.time ? getFormattedDate(`${raceGP.date} ${raceGP.time}`) : raceGP.date) : 'No info';
   const eventSel = eventSelector(raceGP);
   return (
     <section className="flex flex-col justify-center w-full gap-4 item-center">

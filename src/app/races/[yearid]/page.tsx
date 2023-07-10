@@ -6,7 +6,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import RaceSchedule from '@/components/shared/racecalendar';
 import HeadingPages from '@/components/shared/headingPages';
 
-export const revalidate = 86400
+export const revalidate = 86400;
 
 type Props = {
     params: {
@@ -51,8 +51,9 @@ export default async function Result({ params: { yearid } }: Props) {
     const circuitName = element.Circuit.circuitName
     const circuitNameURL = element.Circuit.url
     const locationName = `${element.Circuit.Location.locality}, ${element.Circuit.Location.country}`;
-    const raceDate = getFormattedDate(`${element.date} ${element.time}`)
-    const qualiData = element?.Qualifying?.time ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`)  : 'No info';
+    const raceDate = element?.date ? (element?.time ? getFormattedDate(`${element.date} ${element.time}`) : element.date) : 'No info';
+    const qualiData = element?.Qualifying ? (element.Qualifying?.date && element.Qualifying?.time ? getFormattedDate(`${element.Qualifying.date} ${element.Qualifying.time}`) : element.Qualifying.date) : 'No info';
+    
     const season = element.season;
     const round = element.round;
     return (

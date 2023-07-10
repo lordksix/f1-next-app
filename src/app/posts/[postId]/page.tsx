@@ -17,7 +17,6 @@ export async function generateStaticParams() {
     const posts = await getPostsMeta() //deduped!
 
     if (!posts) return []
-
     return posts.map((post) => ({
         postId: post.id
     }))

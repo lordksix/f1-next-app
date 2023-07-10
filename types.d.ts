@@ -122,7 +122,7 @@ type preLoadedStateType = {
 
 type timeEventGP ={
   date: string,
-  time: string,
+  time?: string,
 }
 
 type RaceGPF1 = {
@@ -132,7 +132,7 @@ type RaceGPF1 = {
   raceName: string,
   Circuit: CircuitGP,
   date: string,
-  time: string,
+  time?: string,
   FirstPractice?: timeEventGP,
   SecondPractice?: timeEventGP,
   ThirdPractice?: timeEventGP,

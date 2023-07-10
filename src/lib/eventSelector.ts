@@ -2,7 +2,7 @@ import getFormattedDate from './getFormattedDate';
 
 const eventSelector = (raceGP: RaceGPF1): EventRace => {
   const firstEvt: string = 'First Practice';
-  const firstEvtTime: string = raceGP?.FirstPractice ? getFormattedDate(`${raceGP.FirstPractice.date} ${raceGP.FirstPractice.time}`) : 'No info';
+  const firstEvtTime: string = raceGP?.FirstPractice?.time ? getFormattedDate(`${raceGP.FirstPractice.date} ${raceGP.FirstPractice.time}`) : 'No info';
   let secondEvt: string;
   let secondEvtTime: string;
   let thirdEvt: string;
@@ -16,7 +16,7 @@ const eventSelector = (raceGP: RaceGPF1): EventRace => {
     thirdEvt = 'Second Practice';
     thirdEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';
     forthEvt = 'Sprint';
-    forthEvtTime = getFormattedDate(`${raceGP.Sprint.date} ${raceGP.Sprint.time}`);
+    forthEvtTime = raceGP?.Sprint?.time ? getFormattedDate(`${raceGP.Sprint.date} ${raceGP.Sprint.time}`) : 'No info';
   } else {
     secondEvt = 'Second Practice';
     secondEvtTime = raceGP?.SecondPractice?.time ? getFormattedDate(`${raceGP.SecondPractice.date} ${raceGP.SecondPractice.time}`) : 'No info';

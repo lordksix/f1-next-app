@@ -44,7 +44,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
   if(!raceGPArr || raceGPArr.length === 0) notFound()
 
   const raceGP = raceGPArr[0];
-  const raceDate = getFormattedDate(`${raceGP.date} ${raceGP.time}`);
+  const raceDate = raceGP?.date ? (raceGP?.time ? getFormattedDate(`${raceGP.date} ${raceGP.time}`) : raceGP.date) : 'No info';
   const externalLink = raceGP.url;
   const resultList = raceGP.Results.map((element) => (
     <li key={nanoid()} className="flex flex-wrap items-center w-full h-full gap-4 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2">
