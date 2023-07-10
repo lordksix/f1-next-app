@@ -5,7 +5,8 @@ import Footer from '@/components/layout/footer';
 
 export const metadata = {
   title: 'Lordkisx F1Mania Homepage',
-  description: 'Formula 1 news and information. Get latest results, Formula 1 calendar and schedule, historical data and latest news.',
+  description:
+    'Formula 1 news and information. Get latest results, Formula 1 calendar and schedule, historical data and latest news.',
   twitter: {
     card: "summary_large_image",
     title: "Lordksix F1Mania - Latest news and information about Formula 1",

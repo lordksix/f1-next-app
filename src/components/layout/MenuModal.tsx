@@ -8,9 +8,8 @@ import {
 } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
-import { LoadingDots } from '../shared/icons';
-import { nanoid } from '@reduxjs/toolkit';
 import { GoHomeFill } from 'react-icons/go';
+import LinksBtnGen from './LinksBtnGen';
 
 
 const MenuModal = async ({
@@ -31,35 +30,6 @@ const MenuModal = async ({
     { path: '/races/current', text: 'F1 Calendar' },
   ];
 
-  const linkBtns = (
-    links.map((link) => (
-      <button
-        key={nanoid()}
-        disabled={menuClicked}
-        className={`${
-          menuClicked
-            ? "cursor-not-allowed border-gray-200 bg-gray-100"
-            : "border border-gray-200 bg-white text-black hover:bg-gray-100"
-        } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
-        onClick={() => {
-          setMenuClicked(false);
-        }}
-      >
-          {menuClicked ? (
-            <LoadingDots color="#808080" />
-          ) : (
-            <Link
-              href={link.path}
-              className="flex items-center justify-center w-full h-full"
-            >
-              {link.text}
-            </Link>
-          )}
-      </button>
-      
-    ))
-  );
-
   return (
     <Modal showModal={showMenuModal} setShowModal={setShowMenuModal}>
       <div className="w-full overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
@@ -78,7 +48,7 @@ const MenuModal = async ({
         </div>
 
         <div className="flex flex-col justify-center w-full px-4 py-8 space-y-4 align-middle bg-gray-950 dark:bg-gray-200 lg:px-16">
-          {linkBtns}
+        <LinksBtnGen links={links} menuClicked={menuClicked} setMenuClicked={setMenuClicked} />
         </div>
       </div>
     </Modal>

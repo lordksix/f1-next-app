@@ -11,8 +11,12 @@ import LoadingData from '../shared/loadingData';
 import { useRouter } from 'next/navigation';
 import { GoHomeFill } from 'react-icons/go';
 
+type Props = {
+  home?: boolean,
+}
 
-const HeaderData = () => {
+
+const HeaderData = ({ home= true }: Props) => {
   const scrolled = useScroll(50);
   const router = useRouter();
   const { MenuModal, setShowMenuModal } = useMenuModal();
@@ -23,14 +27,14 @@ const HeaderData = () => {
     </button>
   );
   const logo = (
-    <Link href="/" className="flex flex-wrap items-center justify-center gap-2 hover:font-bold hover:text-red-500">
+    <Link href="/" className="flex flex-wrap items-center justify-center gap-2 px-4 py-1 rounded-md hover:text-white/90 hover:bg-black dark:hover:text-black dark:hover:bg-white/90">
       <GoHomeFill />
       <Image
         src="/lordksix-logos_transparent.png"
         alt="lordksix logo"
         width="100"
         height="30"
-        className="bg-black rounded-sm dark:bg-transparent"
+        className="bg-black rounded-sm"
       >
       </Image>
       F1Mania
@@ -49,15 +53,15 @@ const HeaderData = () => {
       <Suspense fallback={<LoadingData />}>
         <MenuModal />      
         <header
-          className={`fixed top-0 w-full flex justify-center ${
+          className={`fixed top-0 w-full flex justify-center px-4 sm:px-8 md:px-12 ${
             scrolled
               ? "border-b border-gray-600  dark:border-gray-200 bg-white/50 dark:bg-black/50 backdrop-blur-xl"
               : "bg-white/0 dark:bg-black/0"
           } z-30 transition-all`}
         >
-          <div className="flex items-center justify-between w-full h-16 max-w-screen-xl mx-5">
+          <div className="flex items-center justify-between w-full h-16 max-w-screen-xl">
               {returnBtn}
-              {logo}
+              {home && logo}
               {burgerBtnMenuModal}
           </div>
         </header>
