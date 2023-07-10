@@ -4,9 +4,9 @@ import { sfPro, roboto } from './fonts';
 import Footer from '@/components/layout/footer';
 
 export const metadata = {
-  title: 'lordkisx f1mania',
-  description: 'F1 news and information application',
-  author: 'created by @lordksix at github',
+  title: 'Lordkisx F1Mania Homepage',
+  description: 'Formula 1 news and information. Get latest results, Formula 1 calendar and schedule, historical data and latest news.',
+  author: 'Created by @lordksix at github',
 };
 
 function RootLayout({

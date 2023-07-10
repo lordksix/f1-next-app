@@ -1,6 +1,13 @@
-import { getPostsMeta } from "@/lib/posts"
-import ListItem from "./ListItem"
-import Link from "next/link"
+import ListItem from '@/components/home/ListItem';
+import { getPostsMeta } from '@/lib/posts';
+
+export async function generateMetadata() {
+
+  return {
+      title: 'F1Mania News',
+      description: 'Latest nws about Formula 1 and F1mania'
+  }
+}
 
 export default async function Posts() {
   const posts = await getPostsMeta()
@@ -13,11 +20,10 @@ export default async function Posts() {
     <section className="max-w-2xl mx-auto">
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">News</h2>
       <ul className="w-full p-0 list-none">
-        {posts.slice(0, 2).map(post => (
+        {posts.map(post => (
             <ListItem key={post.id} post={post} />
         ))}
       </ul>
-      <Link href={'/posts'} className="w-full mt-4 font-bold text-right hover:text-red-600" >More news</Link>
     </section>
   )
 }

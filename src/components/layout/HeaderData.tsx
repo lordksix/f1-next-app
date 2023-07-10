@@ -9,6 +9,8 @@ import Image from 'next/image';
 import { useMenuModal } from './MenuModal';
 import LoadingData from '../shared/loadingData';
 import { useRouter } from 'next/navigation';
+import { GoHomeFill } from 'react-icons/go';
+
 
 const HeaderData = () => {
   const scrolled = useScroll(50);
@@ -16,18 +18,19 @@ const HeaderData = () => {
   const { MenuModal, setShowMenuModal } = useMenuModal();
 
   const returnBtn = (
-    <button type="button" className="flex" onClick={() => router.back()}  title="goback">
+    <button type="button" className="flex items-center justify-center hover:text-blue-500" onClick={() => router.back()}  title="goback">
       <FaChevronLeft />
     </button>
   );
   const logo = (
-    <Link href="/" className="flex flex-wrap items-center justify-center">
+    <Link href="/" className="flex flex-wrap items-center justify-center gap-2 hover:font-bold hover:text-red-500">
+      <GoHomeFill />
       <Image
         src="/lordksix-logos_transparent.png"
         alt="lordksix logo"
         width="100"
         height="30"
-        className="mr-2 bg-black rounded-sm dark:bg-transparent"
+        className="bg-black rounded-sm dark:bg-transparent"
       >
       </Image>
       F1Mania

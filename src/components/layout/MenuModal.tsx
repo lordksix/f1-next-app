@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LoadingDots } from '../shared/icons';
 import { nanoid } from '@reduxjs/toolkit';
+import { GoHomeFill } from 'react-icons/go';
 
 
 const MenuModal = async ({
@@ -22,14 +23,12 @@ const MenuModal = async ({
   const [menuClicked, setMenuClicked] = useState(false);
 
   const links = [
-    { path: '/', text: 'Home' },
     { path: '/posts', text: 'News' },
     { path: '/results/current/last', text: 'Last Race Results' },
     { path: '/races/current/next', text: 'Next Race Schedule' },
     { path: '/driverstanding/current', text: 'Driver Standing' },
     { path: '/constructorstanding/current', text: 'Constructor Standing' },
     { path: '/races/current', text: 'F1 Calendar' },
-    { path: '/races', text: 'Historical F1 Calendar' },
   ];
 
   const linkBtns = (
@@ -65,7 +64,8 @@ const MenuModal = async ({
     <Modal showModal={showMenuModal} setShowModal={setShowMenuModal}>
       <div className="w-full overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
         <div className="flex flex-col items-center justify-center px-4 py-6 pt-8 space-y-3 text-center text-white bg-gray-800 border-b border-gray-200 dark:text-black dark:bg-gray-400 lg:px-16">
-          <Link href="/" className="flex items-center gap-4">
+          <Link href="/" className="flex flex-wrap items-center justify-center gap-4">
+            <GoHomeFill />
             <Image
               src="/lordksix-logos_transparent.png"
               alt="lordksix logo"
