@@ -53,6 +53,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
         <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2'>
           <Link 
             href={element.Driver.url}
+            target="_blank"
             className="hover:font-bold"
           >{`${element.Driver.givenName} ${element.Driver.familyName}`}</Link>
           <FlagComp nationality={element.Driver.nationality}/>
@@ -60,6 +61,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
         <div className='flex flex-wrap items-center w-full gap-2 sm:grid sm:grid-flow-col sm:auto-cols-max sm:gap-x-2'>
           <Link 
             href={element.Constructor.url}
+            target="_blank"
             className="hover:font-bold"
           >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
@@ -82,6 +84,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
       </p>
       <Link 
         href={raceGP.Circuit.url}
+        target="_blank"
         className="mt-0 text-sm hover:font-bold sm:text-base"
       >{`Circuit: ${raceGP.Circuit.circuitName}`}</Link>
       <p className="mt-0 text-sm sm:text-base">
@@ -94,7 +97,7 @@ export default async function Race({ params: { yearid, raceid } }: Props) {
         </ul>
       </div>
       <p>
-          <Link href={externalLink} className="hover:text-orange-500">More Details</Link>
+          <Link href={externalLink} target="_blank" className="hover:text-orange-500">More Details</Link>
       </p>
     </section>
   );
