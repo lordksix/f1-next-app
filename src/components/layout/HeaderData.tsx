@@ -8,18 +8,23 @@ import useScroll from '@/lib/hooks/use-scroll';
 import Image from 'next/image';
 import { useMenuModal } from './MenuModal';
 import LoadingData from '../shared/loadingData';
+import UserDropdown from './user-dropdown';
 import { useRouter } from 'next/navigation';
 import { GoHomeFill } from 'react-icons/go';
+import { Session } from "next-auth";
+import { useSignInModal } from './sign-in-modal';
 
 type Props = {
-  home?: boolean,
+  home: boolean,
+  session: Session | null,
 }
 
 
-const HeaderData = ({ home= true }: Props) => {
+const HeaderData = ({ session, home }: Props) => {
   const scrolled = useScroll(50);
   const router = useRouter();
   const { MenuModal, setShowMenuModal } = useMenuModal();
+  const { SignInModal, setShowSignInModal } = useSignInModal();
 
   const returnBtn = (
     <button type="button" className="flex items-center justify-center hover:text-blue-500" onClick={() => router.back()}  title="goback">
@@ -48,9 +53,26 @@ const HeaderData = ({ home= true }: Props) => {
     <GiHamburgerMenu />
   </button>
   );
+
+  const signInBtn = (
+    <div>
+    {session ? (
+      <UserDropdown session={session} />
+    ) : (
+      <button
+        className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+        onClick={() => setShowSignInModal(true)}
+      >
+        Sign In
+      </button>
+    )}
+  </div>
+  );
+
   return (
     <>
       <Suspense fallback={<LoadingData />}>
+        <SignInModal />
         <MenuModal />      
         <header
           className={`fixed top-0 w-full flex justify-center px-4 sm:px-8 md:px-12 ${
@@ -62,7 +84,10 @@ const HeaderData = ({ home= true }: Props) => {
           <div className="flex items-center justify-between w-full h-16 max-w-screen-xl">
               {returnBtn}
               {home && logo}
-              {burgerBtnMenuModal}
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-6">
+                {signInBtn}
+                {burgerBtnMenuModal}
+              </div>
           </div>
         </header>
       </Suspense>
