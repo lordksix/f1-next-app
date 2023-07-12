@@ -43,7 +43,7 @@ const ResultsComp = async () => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-orange-500"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>

@@ -10,7 +10,6 @@ const TwitterComp = () => {
       screenName="f1"
       ariaPolite="assertive"
       theme="dark"
-      onLoad={function noRefCheck(){}}
       options={{ height: 'auto', width: 'auto'}}
     />
     ) : (
