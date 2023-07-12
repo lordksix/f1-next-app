@@ -1,5 +1,5 @@
 export async function getRacesF1StaticParams(): Promise<MetaRaceResult[] | undefined> {
-  const SEASON_ENDPOINT = 'http://ergast.com/api/f1/seasons.json?limit=100';
+  const SEASON_ENDPOINT = 'http://ergast.com/api/f1/seasons.json?limit=100&offset=40';
   const res = await fetch(SEASON_ENDPOINT);
   if (!res.ok) return undefined;
   const racesF1: MetaRaceResult[] = []

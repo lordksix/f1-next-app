@@ -6,34 +6,28 @@ import { LayoutDashboard, LogOut } from 'lucide-react';
 import Popover from '@/components/shared/popover';
 import Image from 'next/image';
 import { Session } from 'next-auth';
+import { useRouter } from 'next/navigation';
 
 export default function UserDropdown({ session }: { session: Session }) {
   const { email, image } = session?.user || {};
   const [openPopover, setOpenPopover] = useState(false);
-
+  const router = useRouter();
   if (!email) return null;
 
   return (
     <div className="relative inline-block text-left">
       <Popover
         content={
-          <div className="w-full p-2 bg-white rounded-md sm:w-56">
-            {/* <Link
-              className="relative flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md hover:bg-gray-100"
-              href="/dashboard"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              <p className="text-sm">Dashboard</p>
-            </Link> */}
+          <div className="w-full p-2 rounded-md bg-slate-700 dark:bg-white sm:w-56">
             <button
-              className="relative flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md cursor-not-allowed hover:bg-gray-100"
-              disabled
+              className="relative flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 text-white/90 dark:text-black"
+              onClick={() => router.push('/profile')}
             >
               <LayoutDashboard className="w-4 h-4" />
-              <p className="text-sm">Dashboard</p>
+              <p className="text-sm">Profile</p>
             </button>
             <button
-              className="relative flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md hover:bg-gray-100"
+              className="relative flex items-center justify-start w-full p-2 space-x-2 text-sm text-left transition-all duration-75 rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 text-white/90 dark:text-black"
               onClick={() => signOut()}
             >
               <LogOut className="w-4 h-4" />

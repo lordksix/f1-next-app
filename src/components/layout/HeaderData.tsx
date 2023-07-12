@@ -11,20 +11,20 @@ import LoadingData from '../shared/loadingData';
 import UserDropdown from './user-dropdown';
 import { useRouter } from 'next/navigation';
 import { GoHomeFill } from 'react-icons/go';
-import { Session } from "next-auth";
 import { useSignInModal } from './sign-in-modal';
+import { useSession } from 'next-auth/react';
 
 type Props = {
   home: boolean,
-  session: Session | null,
 }
 
-
-const HeaderData = ({ session, home }: Props) => {
+const HeaderData = ({ home }: Props) => {
   const scrolled = useScroll(50);
   const router = useRouter();
   const { MenuModal, setShowMenuModal } = useMenuModal();
   const { SignInModal, setShowSignInModal } = useSignInModal();
+
+  const { data: session } = useSession()
 
   const returnBtn = (
     <button type="button" className="flex items-center justify-center hover:text-blue-500" onClick={() => router.back()}  title="goback">
