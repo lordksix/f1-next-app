@@ -8,7 +8,7 @@ import Posts from '@/components/home/Posts';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import LoadingData from '@/components/shared/loadingData';
-import HeaderData from '@/components/layout/HeaderData';
+import HeaderNav from '@/components/layout/HeaderNav';
 
 export const revalidate = 86400;
 
@@ -38,7 +38,7 @@ const Home = () => {
   );
   return (
     <>
-      <HeaderData home={false} />
+      <HeaderNav home={false} />
       <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-6 py-24 mx-auto md:gap-10 no-scrollbar">
         {startPage}
         <section

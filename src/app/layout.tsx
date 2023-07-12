@@ -1,7 +1,8 @@
-import './globals.css'
+import './globals.css';
 import cx from "classnames";
 import { sfPro, roboto } from './fonts';
 import Footer from '@/components/layout/footer';
+import AuthProvider from './context/AuthProvider';
 
 export const metadata = {
   title: 'Lordkisx F1Mania Homepage',
@@ -28,8 +29,10 @@ function RootLayout({
       <body className={`${cx(sfPro.variable, roboto.variable)} min-h-screen bg-gradient-to-br no-scrollbar from-indigo-50 via-white to-cyan-100" dark:from-black dark:to-black text-black dark:text-white/90 w-screen`}
         suppressHydrationWarning={true} 
       >
-      {children}
-      <Footer />
+        <AuthProvider>
+          {children}
+          <Footer />
+        </AuthProvider>
     </body>
     </html>
   );
