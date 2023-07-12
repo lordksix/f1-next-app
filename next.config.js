@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: [
       'www.countryflagicons.com', 'avatars.githubusercontent.com', 'raw.githubusercontent.com',
-      'platform-lookaside.fbsbx.com',
+      'platform-lookaside.fbsbx.com', 'lh3.googleusercontent.com',
     ],
   },
   async redirects() {
