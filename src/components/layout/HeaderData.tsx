@@ -84,7 +84,7 @@ const HeaderData = ({ home }: Props) => {
           <div className="flex items-center justify-between w-full h-16 max-w-screen-xl">
               {returnBtn}
               {home && logo}
-              <div className="flex flex-col gap-2 sm:flex-row sm:gap-6">
+              <div className="flex gap-2 sm:gap-6">
                 {signInBtn}
                 {burgerBtnMenuModal}
               </div>
