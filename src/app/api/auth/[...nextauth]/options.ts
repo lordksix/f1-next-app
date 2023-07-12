@@ -2,7 +2,7 @@ import { NextAuthOptions } from 'next-auth';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import GitHub from '@auth/core/providers/github';
 import Facebook from '@auth/core/providers/facebook';
-import Google from '@auth/core/providers/google';
+import GoogleProvider from 'next-auth/providers/google';
 import clientPromise from '@/lib/mongodb';
 import { Provider } from 'next-auth/providers';
 import { DefaultAdapter } from 'next-auth/adapters';
@@ -13,16 +13,16 @@ export const options: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise) as DefaultAdapter,
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }) as Provider,
     Facebook({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
     }) as Provider,
-    Google({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
     }) as Provider,
     Credentials({
       id: 'credentials',
