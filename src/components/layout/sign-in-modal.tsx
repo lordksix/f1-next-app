@@ -7,7 +7,7 @@ import {
   useCallback,
   useMemo,
 } from 'react';
-import { LoadingDots, Google, Twitter, Github } from '@/components/shared/icons';
+import { LoadingDots } from '@/components/shared/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GoHomeFill } from 'react-icons/go';
