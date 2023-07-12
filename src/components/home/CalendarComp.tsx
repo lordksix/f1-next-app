@@ -55,7 +55,7 @@ const CalendarComp = async () => {
   }
   return (
     <div
-      className="flex flex-col w-full h-full gap-4 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-4 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-blue-500"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
       <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Calendar</h2>

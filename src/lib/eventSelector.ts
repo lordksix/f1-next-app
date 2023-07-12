@@ -1,7 +1,7 @@
 import getFormattedDate from './getFormattedDate';
 
 const eventSelector = (raceGP: RaceGPF1): EventRace => {
-  const firstEvt: string = 'First Practice';
+  const firstEvt = 'First Practice';
   const firstEvtTime: string = raceGP?.FirstPractice?.time ? getFormattedDate(`${raceGP.FirstPractice.date} ${raceGP.FirstPractice.time}`) : 'No info';
   let secondEvt: string;
   let secondEvtTime: string;

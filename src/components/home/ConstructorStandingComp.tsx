@@ -33,23 +33,22 @@ const ConstructorStandingComp = async () => {
   ));
   return (
     <div
-      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl"
+      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-green-500"
       style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
     >
-      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Constructor Standing</h2>
-        <h3 className="font-semibold text-center md:text-lg">{results[0].season}</h3>
-        <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid xl:gap-x-0">
-          {resultList}
-        </ul>
-        <div className="flex items-end self-end justify-end justify-self-end">
-          <Link
-            className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500"
-            href="/constructorstanding/current"
-          >
-            Full standing
-            <FaRegArrowAltCircleRight />
-          </Link>
-        </div>
+      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">{`${results[0].season} Constructor Standing`}</h2>
+      <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid xl:gap-x-0">
+        {resultList}
+      </ul>
+      <div className="flex items-end self-end justify-end justify-self-end">
+        <Link
+          className="flex items-center justify-end gap-2 justify-self-end hover:text-green-500"
+          href="/constructorstanding/current"
+        >
+          Full standing
+          <FaRegArrowAltCircleRight />
+        </Link>
+      </div>
     </div>
   );
 }

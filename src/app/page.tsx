@@ -8,6 +8,7 @@ import Posts from '@/components/home/Posts';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import LoadingData from '@/components/shared/loadingData';
+import HeaderNav from '@/components/layout/HeaderNav';
 
 export const revalidate = 86400;
 
@@ -36,38 +37,41 @@ const Home = () => {
     </section>
   );
   return (
-    <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-6 py-24 mx-auto md:gap-10 no-scrollbar">
-      {startPage}
-      <section
-        className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
-        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-      >
-        <Video id={process.env.HOME_YOUTUBE_ID ?? ''}/>
-        <Posts />
-      </section>
-      <section
-        className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
-        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-      >
-        <LastResultsComp />
-        <Suspense fallback={<LoadingData />}>
-          <TwitterComp />
-        </Suspense>
-      </section>
-      <section 
-        className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
-        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-      >
-        <DriverStandingComp />
-        <ConstructorStandingComp />
-      </section>
-      <section
-        className="flex justify-center w-10/12 max-w-5xl md:w-9/12 no-scrollbar lg:w-10/12 animate-fade-up"
-        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-      >
-        <CalendarComp />
-      </section>
+    <>
+      <HeaderNav home={false} />
+      <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-6 py-24 mx-auto md:gap-10 no-scrollbar">
+        {startPage}
+        <section
+          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+        >
+          <Video id={process.env.HOME_YOUTUBE_ID ?? ''}/>
+          <Posts />
+        </section>
+        <section
+          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+        >
+          <LastResultsComp />
+          <Suspense fallback={<LoadingData />}>
+            <TwitterComp />
+          </Suspense>
+        </section>
+        <section 
+          className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+        >
+          <DriverStandingComp />
+          <ConstructorStandingComp />
+        </section>
+        <section
+          className="flex justify-center w-10/12 max-w-5xl md:w-9/12 no-scrollbar lg:w-10/12 animate-fade-up"
+          style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+        >
+          <CalendarComp />
+        </section>
     </main>
+    </>
   );
 }
 

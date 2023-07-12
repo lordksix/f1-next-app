@@ -3,9 +3,13 @@ import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
 export const alt = "Lordksix F1Mania - Latest news and information about Formula 1";
+export const size = {
+  width: 1200,
+  height: 630,
+}
 export const contentType = "image/png";
 
-export default async function OG() {
+export default async function Image() {
   const sfPro = await fetch(
     new URL("./fonts/SF-Pro-Display-Medium.otf", import.meta.url),
   ).then((res) => res.arrayBuffer());
@@ -47,8 +51,7 @@ export default async function OG() {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      ...size,
       fonts: [
         {
           name: "SF Pro",

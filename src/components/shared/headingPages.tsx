@@ -6,11 +6,6 @@ import { useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu';
 import Link from 'next/link';
 
-type popList = {
-  title: string,
-  href: string,
-};
-
 type Props = {
   heading: string,
 };

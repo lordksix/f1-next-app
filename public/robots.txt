@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://f1-next-app.vercel.app/
-
-# Sitemaps
-Sitemap: https://f1-next-app.vercel.app/sitemap.xml

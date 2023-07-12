@@ -47,13 +47,19 @@
     <li><a href="https://www.w3.org/Style/CSS/specs.en.html">CSS</a></li>
     <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
   </ul>
-  <summary>Framework</summary>
 </details>
 <details>
+  <summary>Framework</summary>
   <ul>
     <li><a href="https://react.dev/">React</a></li>
     <li><a href="https://nextjs.org/">NextJS</a></li>
     <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
+  </ul>
+</details>
+<details>
+  <summary>Database</summary>
+  <ul>
+    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
   </ul>
 </details>
 
@@ -61,6 +67,9 @@
 
 - **NextJS App**
 - **Productions deployed**
+- **Add Youtube plugin**
+- **Add Twitter plugin**
+- **Implement MongoDB**
 - **Fetch Formula 1 data from API**
 
 
@@ -164,9 +173,7 @@ Go to [🚀 Live Demo](https://f1-next-app.vercel.app/) to check it out.
 
 Future changes:
 - Add webcraler to add specfic information.
-- Add DB connection.
 - Improve styling.
-- Add blog page
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

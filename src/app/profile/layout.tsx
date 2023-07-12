@@ -1,6 +1,6 @@
 import HeaderNav from '@/components/layout/HeaderNav';
 
-function ConstructorstandingLayout({
+function ProfileLayout({
   children,
 }: {
   children: React.ReactNode
@@ -15,4 +15,4 @@ function ConstructorstandingLayout({
   )
 }
 
-export default ConstructorstandingLayout;
+export default ProfileLayout;
