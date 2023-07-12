@@ -3,7 +3,7 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   swcMinify: true,
   images: {
-    domains: ['www.countryflagicons.com', 'raw.githubusercontent.com'],
+    domains: ['www.countryflagicons.com', 'avatars.githubusercontent.com', 'raw.githubusercontent.com'],
   },
   async redirects() {
     return [
