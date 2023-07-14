@@ -69,6 +69,7 @@
 - **Productions deployed**
 - **Add Youtube plugin**
 - **Add Twitter plugin**
+- **Add Google, Facebook and GitHub login**
 - **Implement MongoDB**
 - **Fetch Formula 1 data from API**
 
