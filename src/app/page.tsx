@@ -14,7 +14,7 @@ export const revalidate = 86400;
 
 const Home = () => {
   const startPage = (
-    <section className="w-full mt-24 mb-12">
+    <section className="w-full mt-24 mb-8">
       <div
         className="flex gap-4 flex-wrap items-center justify-center animate-fade-up bg-gradient-to-br text-center text-lg sm:text-xl md:text-2xl lg:text-3xl from-stone-500 to-red-700 dark:from-white dark:to-blue-400 bg-clip-text font-bold text-transparent tracking-[-0.02em] opacity-0 drop-shadow-sm"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
