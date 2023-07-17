@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
 import { getRaceResultF1 } from '@/lib/getF1data';
+import { Card } from '../card';
 
 
 const ResultsComp = async () => {
@@ -42,29 +43,31 @@ const ResultsComp = async () => {
     </li>
   ));
   return (
-    <div
-      className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-orange-500"
-      style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-    >
-      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
-      <Link 
-        href={results[0].url}
-        target="_blank"
-        className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
+    <Card>
+      <div
+        className="flex flex-col w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-orange-500"
+        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
-        {results[0].raceName}
-      </Link>
-
-      <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid ">
-        {resultList}
-      </ul>
-      <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
-        <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
-          Full results
-          <FaRegArrowAltCircleRight />
+        <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
+        <Link 
+          href={results[0].url}
+          target="_blank"
+          className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
+        >
+          {results[0].raceName}
         </Link>
+
+        <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid ">
+          {resultList}
+        </ul>
+        <div className="flex items-end self-end justify-end w-full h-full justify-self-end">
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-orange-500" href={`/results/${results[0].season}/${results[0].round}`}>
+            Full results
+            <FaRegArrowAltCircleRight />
+          </Link>
+        </div>
       </div>
-    </div>
+    </Card>
   )
 }
 
