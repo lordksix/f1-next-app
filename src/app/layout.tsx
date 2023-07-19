@@ -1,5 +1,6 @@
 import './globals.css';
 import { f1tffReg } from './fonts';
+import { Analytics } from '@vercel/analytics/react';
 import Footer from '@/components/layout/footer';
 import AuthProvider from './context/AuthProvider';
 
@@ -28,6 +29,7 @@ function RootLayout({
       <body className={`${f1tffReg.variable} min-h-screen bg-gradient-to-br no-scrollbar from-indigo-50 via-white to-cyan-100" dark:from-black dark:to-black text-black dark:text-white/90 w-screen`}
         suppressHydrationWarning={true} 
       >
+        <Analytics />
         <AuthProvider>
           {children}
           <Footer />
