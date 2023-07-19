@@ -24,23 +24,23 @@ const SignInModal = ({
 
   const signInBtn = (provider: string) => (
     <button
-    disabled={signInClicked}
-    className={`${
-      signInClicked
-        ? "cursor-not-allowed border-gray-200 bg-gray-100"
-        : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-    } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
-    onClick={() => {
-      setSignInClicked(true);
-      signIn(provider);
-    }}
-  >
-    {signInClicked ? (
-      <LoadingDots color="#808080" />
-    ) : (
-      <SignInBtn provider={provider}/>
-    )}
-  </button>
+      disabled={signInClicked}
+      className={`${
+        signInClicked
+          ? "cursor-not-allowed border-gray-200 bg-gray-100"
+          : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+      } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+      onClick={() => {
+        setSignInClicked(true);
+        signIn(provider);
+      }}
+    >
+      {signInClicked ? (
+        <LoadingDots color="#808080" />
+      ) : (
+        <SignInBtn provider={provider}/>
+      )}
+    </button>
   );
   return (
     <Modal showModal={showSignInModal} setShowModal={setShowSignInModal}>
@@ -57,10 +57,8 @@ const SignInModal = ({
             />
             <h3 className="text-2xl font-bold font-display">F1mania</h3>
           </Link>
-          <h4 className="text-xl font-bold font-display">Sign In</h4>
           <p className="text-sm text-gray-500">
-            This is strictly for demo purposes - only your email and profile
-            picture will be stored.
+            Sign in or sign up for the best experience
           </p>
         </div>
 
@@ -69,6 +67,16 @@ const SignInModal = ({
           {signInBtn('github')}
           {signInBtn('facebook')}
           {signInBtn('credencial')}
+          <Link
+           href="/account/signup"
+            className={`${
+              signInClicked
+                ? "cursor-not-allowed border-gray-200 bg-gray-100"
+                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+          >
+            Sign up
+          </Link>
         </div>
       </div>
     </Modal>

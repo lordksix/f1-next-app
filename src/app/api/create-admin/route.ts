@@ -1,11 +1,13 @@
+import { getFormattedDateNow } from '@/lib/getFormattedDate';
 import clientPromise from '@/lib/mongodb';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret');
-  const user = request.nextUrl.searchParams.get('user');
+  const username = request.nextUrl.searchParams.get('user');
   const pass = request.nextUrl.searchParams.get('pass');
+  const createdAt = getFormattedDateNow();
   if (secret !== process.env.MY_SECRET_TOKEN) {
     return new NextResponse(JSON.stringify({ message: 'Invalid Token' }), {
         status: 401,
@@ -15,7 +17,7 @@ export async function GET(request: NextRequest) {
         }
     })
   }
-  if (!user || !pass) {
+  if (!username || !pass) {
     return new NextResponse(JSON.stringify({ message: 'Invalid Token' }), {
         status: 400,
         statusText: 'Invalid Request',
@@ -25,12 +27,15 @@ export async function GET(request: NextRequest) {
     })
   }
   const client = await clientPromise;
-  const users = client.db(process.env.DB_NAME).collection('users');
+  const usersCollection = client.db(process.env.DB_NAME).collection(process.env.MONGO_USER_COLLECTION as string);
 
   const password = bcrypt.hashSync(pass, 10);
-  await users.insertOne({
-    user,
+  await usersCollection.insertOne({
+    username,
     password,
+    createdAt,
+    verified: false,
+    updatedAt: createdAt,
     role: 'admin',
   });
 

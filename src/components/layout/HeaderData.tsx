@@ -55,7 +55,7 @@ const HeaderData = ({ home }: Props) => {
   );
 
   const signInBtn = (
-    <div>
+    <div className="flex items-center justify-center">
     {session ? (
       <UserDropdown session={session} />
     ) : (

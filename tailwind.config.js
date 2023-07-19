@@ -11,6 +11,13 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        'ct-dark-600': '#222',
+        'ct-dark-200': '#e5e7eb',
+        'ct-dark-100': '#f5f6f7',
+        'ct-blue-600': '#2363eb',
+        'ct-yellow-600': '#f9d13e',
+      },
       screens: {
         'xs': '290px',
         'sm': '480px',
@@ -26,14 +33,76 @@ module.exports = {
         '3xl': '1536px',
       },
       animation: {
+        "fade-in": "fade-in 3s ease-in-out forwards",
+				title: "title 3s ease-out forwards",
+				"fade-left": "fade-left 3.5s ease-in-out forwards",
+				"fade-right": "fade-right 3.5s ease-in-out forwards",
         // Fade up and down
-        "fade-up": "fade-up 0.5s",
-        "fade-down": "fade-down 0.5s",
+        "fade-up": "fade-up 0.7s",
+        "fade-down": "fade-down 0.7s",
         // Tooltip
         "slide-up-fade": "slide-up-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-down-fade": "slide-down-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
       },
       keyframes: {
+        "fade-in": {
+					"0%": {
+						opacity: "0%",
+					},
+					"75%": {
+						opacity: "0%",
+					},
+					"100%": {
+						opacity: "100%",
+					},
+				},
+				"fade-left": {
+					"0%": {
+						transform: "translateX(100%)",
+						opacity: "0%",
+					},
+
+					"30%": {
+						transform: "translateX(0%)",
+						opacity: "100%",
+					},
+					"100%": {
+						opacity: "0%",
+					},
+				},
+				"fade-right": {
+					"0%": {
+						transform: "translateX(-100%)",
+						opacity: "0%",
+					},
+
+					"30%": {
+						transform: "translateX(0%)",
+						opacity: "100%",
+					},
+					"100%": {
+						opacity: "0%",
+					},
+				},
+				title: {
+					"0%": {
+						"line-height": "0%",
+						"letter-spacing": "0.25em",
+						opacity: "0",
+					},
+					"25%": {
+						"line-height": "0%",
+						opacity: "0%",
+					},
+					"80%": {
+						opacity: "100%",
+					},
+
+					"100%": {
+						"line-height": "100%",
+						opacity: "100%",
+					},
+				},
         // Fade up and down
         "fade-up": {
           "0%": {
@@ -74,6 +143,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
   ],

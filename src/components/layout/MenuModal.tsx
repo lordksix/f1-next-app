@@ -32,7 +32,7 @@ const MenuModal = async ({
 
   return (
     <Modal showModal={showMenuModal} setShowModal={setShowMenuModal}>
-      <div className="w-full overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
+      <div className="w-full mx-auto overflow-hidden shadow-xl lg:max-w-md lg:rounded-2xl lg:border lg:border-gray-200">
         <div className="flex flex-col items-center justify-center px-4 py-6 pt-8 space-y-3 text-center text-white bg-gray-800 border-b border-gray-200 dark:text-black dark:bg-gray-400 lg:px-16">
           <Link href="/" className="flex flex-wrap items-center justify-center gap-4">
             <GoHomeFill />
@@ -48,7 +48,7 @@ const MenuModal = async ({
         </div>
 
         <div className="flex flex-col justify-center w-full px-4 py-8 space-y-4 align-middle bg-gray-950 dark:bg-gray-200 lg:px-16">
-        <LinksBtnGen links={links} menuClicked={menuClicked} setMenuClicked={setMenuClicked} />
+          <LinksBtnGen links={links} menuClicked={menuClicked} setMenuClicked={setMenuClicked} />
         </div>
       </div>
     </Modal>

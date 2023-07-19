@@ -3,6 +3,7 @@ import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import getFormattedDate from '@/lib/getFormattedDate';
 import { getRaceF1 } from '@/lib/getF1data';
 import RaceSchedule from '../shared/racecalendar';
+import { Card } from '../card';
 
 const CalendarComp = async () => {
   const races = await getRaceF1('current/next');
@@ -54,38 +55,40 @@ const CalendarComp = async () => {
     );
   }
   return (
-    <div
-      className="flex flex-col w-full h-full gap-4 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-blue-500"
-      style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-    >
-      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Calendar</h2>
-      <section className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-10">
-        <div className="flex flex-col gap-2">
-          <RaceSchedule
-            raceName={raceName}
-            raceNameURL={raceNameURL}
-            circuitName={circuitName}
-            circuitNameURL={circuitNameURL}
-            locationName={locationName}
-            raceDate={raceDate}
-            qualiData={qualiData}
-            season={races[0].season}
-            round={races[0].round}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          {followingRace}
-        </div>
-      </section>
-      <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
-        {`${races[0].season} F1 CALENDAR`}
-        <FaRegArrowAltCircleRight />
-      </Link>
-      <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-orange-500 md:text-lg xl:text-2xl" href={'/races'}>
-        {'HISTORICAL F1 CALENDAR'}
-        <FaRegArrowAltCircleRight />
-      </Link>
-    </div>
+    <Card>
+      <div
+        className="flex flex-col w-full h-full gap-4 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-blue-500"
+        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+      >
+        <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Current Calendar</h2>
+        <section className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-10">
+          <div className="flex flex-col gap-2">
+            <RaceSchedule
+              raceName={raceName}
+              raceNameURL={raceNameURL}
+              circuitName={circuitName}
+              circuitNameURL={circuitNameURL}
+              locationName={locationName}
+              raceDate={raceDate}
+              qualiData={qualiData}
+              season={races[0].season}
+              round={races[0].round}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            {followingRace}
+          </div>
+        </section>
+        <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-blue-500 md:text-lg xl:text-2xl" href={`/races/${races[0].season}`}>
+          {`${races[0].season} F1 CALENDAR`}
+          <FaRegArrowAltCircleRight />
+        </Link>
+        <Link className="flex items-center justify-center w-full gap-2 text-base font-bold hover:text-orange-500 md:text-lg xl:text-2xl" href={'/races'}>
+          {'HISTORICAL F1 CALENDAR'}
+          <FaRegArrowAltCircleRight />
+        </Link>
+      </div>
+    </Card>
   );
 };
 
