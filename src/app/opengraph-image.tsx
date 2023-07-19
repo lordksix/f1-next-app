@@ -30,9 +30,9 @@ export default async function Image() {
         }}
       >
         <img
-          src={new URL("../../public/lordksix-logos_transparent.png", import.meta.url).toString()}
+          src="https://raw.githubusercontent.com/lordksix/f1-posts/main/images/lordksix-logos_transparent.png"
           alt="Lordksix Logo"
-          tw="w-20 h-20 mb-4 opacity-95"
+          tw="w-52 h-20 mb-4 opacity-95"
         />
         <h1
           style={{
