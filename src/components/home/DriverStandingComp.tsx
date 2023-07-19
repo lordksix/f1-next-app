@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FaRegArrowAltCircleRight } from 'react-icons/fa';
 import FlagComp from '../shared/flag';
 import { getDriverStandingF1 } from '@/lib/getF1data';
+import { Card } from '../card';
 
 const DriverStandingComp = async () => {
   const results = await getDriverStandingF1('current');
@@ -40,21 +41,24 @@ const DriverStandingComp = async () => {
     </li>
   ));
   return (
-    <div
-      className="flex flex-col items-center justify-center w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-red-500"
-      style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-    >
-      <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">{`${results[0].season} Driver Standing`}</h2>
-      <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid xl:gap-x-0">
-        {resultList}
-      </ul>
-      <div className="flex items-end self-end justify-end justify-self-end">
-        <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-red-500" href="/driverstanding/current">
-          Full standing
-          <FaRegArrowAltCircleRight />
-        </Link>
+    <Card>
+      <div
+        className="flex flex-col items-center justify-center w-full h-full gap-2 px-4 py-6 border-2 border-solid animate-fade-up rounded-3xl hover:border-red-500"
+        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+      >
+        <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">{`${results[0].season} Driver Standing`}</h2>
+        <ul className="flex flex-col justify-start w-11/12 h-full gap-4 sm:grid sm:grid-cols-2 lg:flex xl:grid xl:gap-x-0">
+          {resultList}
+        </ul>
+        <div className="flex items-end self-end justify-end justify-self-end">
+          <Link className="flex items-center justify-end gap-2 justify-self-end hover:text-red-500" href="/driverstanding/current">
+            Full standing
+            <FaRegArrowAltCircleRight />
+          </Link>
+        </div>
       </div>
-    </div>
+    </Card>
+
   );
 }
 

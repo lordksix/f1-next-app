@@ -207,3 +207,28 @@ type BlogPost = {
   meta: Meta,
   content: ReactElement<any, string | JSXElementConstructor<any>>,
 }
+
+
+type FormDataRegister = {
+  name: string,
+  username: string
+  email: string,
+  userpassword: string,
+}
+
+type FilteredUser = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  emailVerified: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+type UserResponse = {
+  status: string;
+  data: {
+    user: FilteredUser;
+  };
+}

@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: [
       'www.countryflagicons.com', 'avatars.githubusercontent.com', 'raw.githubusercontent.com',
-      'platform-lookaside.fbsbx.com',
+      'platform-lookaside.fbsbx.com', 'lh3.googleusercontent.com',
     ],
   },
   async redirects() {
@@ -13,6 +13,11 @@ const nextConfig = {
       {
         source: "/github",
         destination: "https://github.com/lordksix/f1-next-app",
+        permanent: false,
+      },
+      {
+        source: "/home",
+        destination: "/",
         permanent: false,
       },
     ];

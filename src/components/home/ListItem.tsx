@@ -1,5 +1,6 @@
 import Link from "next/link"
-import getFormattedDate from "@/lib/getFormattedDate"
+import { f1tffBlack } from "@/app/fonts"
+import { timeAgo } from "@/lib/utils"
 
 type Props = {
     post: Meta
@@ -7,13 +8,13 @@ type Props = {
 
 export default function ListItem({ post }: Props) {
   const { id, title, date } = post
-  const formattedDate = getFormattedDate(date)
+  const formattedDate = timeAgo(new Date(date));
 
   return (
-    <li className="mt-4 font-semibold md:text-lg">
-      <Link className="hover:underline hover:text-black/70 dark:hover:text-white" href={`/posts/${id}`}>{title}</Link>
+    <li className={`${f1tffBlack.variable} mt-4`}>
+      <Link className="hover:underline text-white/90 " href={`/posts/${id}`}>{title}</Link>
       <br />
-      <p className="mt-1 text-sm">{formattedDate}</p>
+      <p className="mt-1 text-sm text-white/90 text-end">{`Published ${formattedDate}`}</p>
     </li>
   )
 }
