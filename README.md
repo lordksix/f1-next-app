@@ -71,6 +71,7 @@
 - **Add Twitter plugin**
 - **Add Google, Facebook and GitHub login**
 - **Implement MongoDB**
+- **Implement SignUp**
 - **Fetch Formula 1 data from API**
 
 
