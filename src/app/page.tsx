@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 import LoadingData from '@/components/shared/loadingData';
 import HeaderNav from '@/components/layout/HeaderNav';
+import { f1tffBold, f1tffWide } from './fonts';
 
 export const revalidate = 86400;
 
@@ -30,7 +31,7 @@ const Home = () => {
       </div>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <h1
-        className="duration-1000 align-middle animate-title bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]"
+        className={`${f1tffBold.variable} duration-1000 align-middle animate-title bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]`}
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
       F1mania
@@ -42,16 +43,16 @@ const Home = () => {
     <>
       <HeaderNav home={false} />
       {startPage}
-      <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-10 py-6 mx-auto md:gap-16 no-scrollbar">
+      <main className="flex flex-col items-center justify-start w-full max-w-6xl min-h-screen gap-10 py-6 mx-auto no-scrollbar">
         <section
-          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 animate-fade-up"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           <Video id={process.env.HOME_YOUTUBE_ID ?? ''}/>
           <Posts />
         </section>
         <section
-          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          className="flex flex-col justify-between w-10/12 h-full max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 animate-fade-up"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           <LastResultsComp />
@@ -60,7 +61,7 @@ const Home = () => {
           </Suspense>
         </section>
         <section 
-          className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 md:gap-10 animate-fade-up"
+          className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 animate-fade-up"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           <DriverStandingComp />
