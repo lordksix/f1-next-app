@@ -1,5 +1,4 @@
 import Link from "next/link"
-import getFormattedDate from "@/lib/getFormattedDate"
 import { f1tffBlack } from "@/app/fonts"
 import { timeAgo } from "@/lib/utils"
 

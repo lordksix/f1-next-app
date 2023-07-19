@@ -20,7 +20,7 @@ const Home = () => {
         className="flex gap-4 flex-wrap items-center justify-center animate-fade-up bg-gradient-to-br text-center text-lg sm:text-xl md:text-2xl lg:text-3xl from-stone-500 to-red-700 dark:from-white dark:to-blue-400 bg-clip-text font-bold text-transparent tracking-[-0.02em] opacity-0 drop-shadow-sm"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
-        Welcome to
+        <span className={f1tffBold.variable}>Welcome to</span>
         <Image
           src="/lordksix-logos_transparent.png"
           alt="lordksix logo"
@@ -31,7 +31,7 @@ const Home = () => {
       </div>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <h1
-        className={`${f1tffBold.variable} duration-1000 align-middle animate-title bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]`}
+        className={`${f1tffWide.variable} duration-1000 align-middle animate-title bg-gradient-to-br from-black to-stone-500 dark:from-white dark:to-stone-500 bg-clip-text text-center font-display text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]`}
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
       F1mania
