@@ -15,6 +15,11 @@ const nextConfig = {
         destination: "https://github.com/lordksix/f1-next-app",
         permanent: false,
       },
+      {
+        source: "/home",
+        destination: "/",
+        permanent: false,
+      },
     ];
   },
 }
