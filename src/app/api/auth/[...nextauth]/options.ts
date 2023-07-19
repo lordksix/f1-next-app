@@ -1,4 +1,4 @@
-import { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions, User } from 'next-auth';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import GitHub from '@auth/core/providers/github';
 import Facebook from '@auth/core/providers/facebook';
@@ -43,10 +43,10 @@ export const options: NextAuthOptions = {
         const client = await clientPromise;
         const usersCollection = client
           .db(process.env.DB_NAME)
-          .collection('users');
-        const temp = credentials?.username as string;
-        const email = temp.toLowerCase();
-        const user = await usersCollection.findOne({ email });
+          .collection(process.env.MONGO_USER_COLLECTION as string);
+        const temp = credentials.username as string;
+        const username = temp.toLowerCase();
+        const user = await usersCollection.findOne({ username });
         if (!user) {
           throw new Error('User does not exist.');
         }
@@ -68,6 +68,33 @@ export const options: NextAuthOptions = {
       },
   }) as Provider,
   ],
+  callbacks: {
+    async jwt({token, user}) {
+      if (user) {
+        token.name = user.name;
+        token.createdAt = user.createdAt;
+        token.email = user.email;
+        token.emailVerified = user.emailVerified as boolean;
+        token.id = user.id;
+        token.picture = user.image;
+        token.updatedAt = user.updatedAt;
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({session, token}) {
+      if (token && session.user) {
+        session.user.createdAt = token.createdAt;
+        session.user.email = token.email;
+        session.user.emailVerified = token.emailVerified;
+        session.user.id = token.id;
+        session.user.image = token.picture;
+        session.user.updatedAt = token.updatedAt;
+        session.user.role = token.role;
+      }
+      return session;
+    }
+  },
   session: {
     strategy: 'jwt',
   },
