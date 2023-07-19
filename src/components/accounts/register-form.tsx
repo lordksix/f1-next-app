@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ export default function RegisterForm() {
     try {
       await apiRegisterUser(JSON.stringify(credentials));
       setRequestLoading(true);
-      return router.push("/login");
+      return router.push('/api/auth/signin?callbackUrl=/');
     } catch (error: any) {
       if (error instanceof Error) {
         handleApiError(error);
@@ -44,8 +44,8 @@ export default function RegisterForm() {
     }
   }
 
-  const onSubmitHandler: SubmitHandler<FormDataRegister> = (values) => {
-    RegisterUserFunction(values);
+  const onSubmitHandler: SubmitHandler<FormDataRegister> = async (values) => {
+    await RegisterUserFunction(values);
   };
 
   return (
@@ -54,18 +54,18 @@ export default function RegisterForm() {
         onSubmit={handleSubmit(onSubmitHandler)}
         className="w-full max-w-md p-8 mx-auto space-y-5 overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl"
       >
-        <FormInput label="Name" name="name" />
-        <FormInput label="Username" name="username" />
-        <FormInput label="Email" name="email" type="email" />
-        <FormInput label="Password" name="userpassword" type="password" />
+        <FormInput label="Name" name="name" required={true} />
+        <FormInput label="Username" name="username" required={true} />
+        <FormInput label="Email" name="email" type="email" required={true} />
+        <FormInput label="Password" name="userpassword" type="password" required={true} />
         <FormInput
           label="Confirm Password"
           name="passwordConfirm"
           type="password"
         />
-        <span className="block">
+        <span className="block text-black">
           Already have an account?{" "}
-          <Link href="/login" className="text-ct-blue-600">
+          <Link href="/api/auth/signin?callbackUrl=/" className="text-ct-blue-600">
             Login Here
           </Link>
         </span>
