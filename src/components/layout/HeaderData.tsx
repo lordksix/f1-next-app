@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { FaChevronLeft } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import useScroll from '@/lib/hooks/use-scroll';
 import Image from 'next/image';
 import { useMenuModal } from './MenuModal';
