@@ -14,15 +14,15 @@ const ResultsComp = async () => {
         <h3 className="text-center"> No Results</h3>
       </div>
     );
-    
-  } 
+
+  }
   const resultArr = results[0].Results.slice(0, 3);
   const resultList = resultArr.map((element) => (
     <li key={nanoid()} className="flex items-center w-full gap-2 text-sm md:text-base">
       <div>{`${element.position}.`}</div>
       <div>
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
-          <Link 
+          <Link
             href={element.Driver.url}
             target="_blank"
             className="hover:font-bold"
@@ -30,13 +30,13 @@ const ResultsComp = async () => {
           <FlagComp nationality={element.Driver.nationality}/>
         </div>
         <div className='grid items-center grid-flow-col gap-2 auto-cols-max'>
-          <Link 
+          <Link
             href={element.Constructor.url}
             target="_blank"
             className="hover:font-bold"
           >{element.Constructor.name}</Link>
           <FlagComp nationality={element.Constructor.nationality}/>
-        </div>        
+        </div>
         <p>{`Total time: ${element?.Time?.time ?? 'No time'}`}</p>
         <p>{`Points: ${element.points}`}</p>
       </div>
@@ -49,7 +49,7 @@ const ResultsComp = async () => {
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         <h2 className="text-lg font-bold text-center md:text-xl xl:text-3xl">Last <span className="hidden md:inline">Grand Prix</span> Results</h2>
-        <Link 
+        <Link
           href={results[0].url}
           target="_blank"
           className="w-full font-semibold text-center hover:font-extrabold md:text-lg"
