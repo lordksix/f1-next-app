@@ -10,7 +10,8 @@ const TwitterComp = () => {
       screenName="f1"
       ariaPolite="assertive"
       theme="dark"
-      options={{ height: 'auto', width: 'auto'}}
+      options={{ height: '400', width: 'auto'}}
+      tweetLimit={3}
     />
     ) : (
       <></>

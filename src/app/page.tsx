@@ -6,8 +6,6 @@ import TwitterComp from '@/components/shared/twitterComp';
 import Video from '@/components/shared/Video';
 import Posts from '@/components/home/Posts';
 import Image from 'next/image';
-import { Suspense } from 'react';
-import LoadingData from '@/components/shared/loadingData';
 import HeaderNav from '@/components/layout/HeaderNav';
 import { f1tffBold, f1tffWide } from './fonts';
 
@@ -56,9 +54,7 @@ const Home = () => {
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           <LastResultsComp />
-          <Suspense fallback={<LoadingData />}>
-            <TwitterComp />
-          </Suspense>
+          <TwitterComp />
         </section>
         <section 
           className="flex flex-col justify-between w-10/12 max-w-5xl gap-6 md:w-9/12 no-scrollbar lg:grid lg:w-10/12 lg:grid-cols-2 animate-fade-up"
